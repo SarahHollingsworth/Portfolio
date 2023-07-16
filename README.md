@@ -1,7 +1,7 @@
 ## Resume
 ### Argentis Group:  Office Location Proposal
 * Project utilizing cluserting methods to propose new office locations in Central Ohio
-* SKills Utilized:
+* Skills Utilized:
   1. SAS
   2. Data Cleansing
   3. Statistical Analysis
