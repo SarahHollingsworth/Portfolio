@@ -2,7 +2,7 @@
 ### Argentis Group:  Office Location Proposal
 * Project utilizing cluserting methods to propose new office locations in Central Ohio
 * SKills Utilized:
-** SAS
+1. 
   
 * Utilize SAS to cleanse data, run k-means clustering models, project office locations
 ### Challenger: When Science and Bureaucracy Collide
