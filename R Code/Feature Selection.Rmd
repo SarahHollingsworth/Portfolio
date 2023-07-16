@@ -1,0 +1,94 @@
+---
+title: "Feature Selection"
+output:
+  word_document: default
+  html_document: default
+date: '2023-07-15'
+---
+
+Feature Selection
+
+Part A:  Best Subset Approach
+
+```{r}
+library(ISLR)
+fix(Hitters)
+names(Hitters)
+dim(Hitters)
+sum(is.na(Hitters$Salary))
+
+Hitters = na.omit(Hitters)
+dim(Hitters)
+sum(is.na(Hitters))
+
+library(leaps)
+regfit.full = regsubsets(Salary~., Hitters)
+summary(regfit.full)
+
+regfit.full = regsubsets(Salary~., data=Hitters, nvmax=19)
+reg.summary = summary(regfit.full)
+
+names(reg.summary)
+
+reg.summary$rsq
+
+par(mfrow=c(2,2))
+plot(reg.summary$rss, xlab="Number of Variables", ylab="RSS", type="l")
+plot(reg.summary$adjr2, xlab="Number of Variables", ylab="Adjusted Rsq", type="l")
+
+which.max(reg.summary$adjr2)
+points(11, reg.summary$adjr2[11], col="red", cex=2, pch=20)
+
+plot(reg.summary$cp, xlab="Number of Variables", ylab="Cp", type="l")
+which.min(reg.summary$cp)
+points(10, reg.summary$cp[10], col="red", cex=2, pch=20)
+which.min(reg.summary$bic)
+plot(reg.summary$bic, xlab="Number of Variables", ylab="BIC", type="l")
+points(6, reg.summary$bic[6], col="red", cex=2, pch=20)
+
+par(mfrow=c(1,1))
+plot(regfit.full, scale="r2")
+plot(regfit.full, scale="adjr2")
+plot(regfit.full, scale="Cp")
+plot(regfit.full, scale="bic")
+
+coef(regfit.full, 11)
+coef(regfit.full, 10)
+coef(regfit.full, 6)
+```
+
+
+  1. What features were selected of the best subset approach? Which model had the lowest BIC?  
+  
+  Based on the highest adjusted $R^2$ statistic, the best model would have 11 features which include AtBat, Hits, Walks, CAtBat, Runs, CRBI, CWalks, LeagueN, DivisionW, PutOuts, and Assists. The lowest Mallows $C_{p}$ further reduces the variables to 10 and includes AtBat, Hits, Walks, CAtBat, CRuns, CRBI, CWalks, DivisionW, PutOuts, and Assists.  The best subset based on the lowest BIC statistic is a six feature model which includes AtBat, Hits, Walks, CRBI DivisionW and PutOuts.  
+  
+  2. Explain the BIC and why this is important?  
+  
+  The Bayesian information criterion (BIC), is a statistic which is used to estimate the test MSE which is calculated using the training RSS and a penalty using the log($n$) to inflict a heavier penalty on models with more predictors. To select the best model we can either directly or indirectly estimate the test error for the model. BIC one of four approaches which can be used to indirectly estimate the test error for a model. When using feature selection simpler models tend to perform better, so utilizing BIC which includes a higher penalty for more variables will result in a simpler model and better performance on unseen data.   
+
+
+Part B:  Forward and Backward Stepwise Feature Selection
+
+```{r}
+regfit.fwd = regsubsets(Salary~., data=Hitters, nvmax=19, method="forward")
+summary(regfit.fwd)
+regfit.bwd = regsubsets(Salary~., data=Hitters, nvmax=19, method="backward")
+summary(regfit.bwd)
+
+coef(regfit.full, 7)
+coef(regfit.fwd, 7)
+coef(regfit.bwd, 7)
+
+```
+
+  1. Briefly describe how both forward and backward stepwise methods work.  
+  Forward stepwise selection starts with a $M_{0}$ null model, one additional feature is added to the model, the best $M_{k+1}$ model is chosen based on the RSS or $R^2$, all $M_{0},..,M_{p}$ models are evaluated and the single best is chosen using cross-validaiton error, $C_{p}$, AIC, BIC, or adjusted $R^2$.  Backward stepwise selection starts with a $M_{p}$ full model with all $p$ predictors, one feature is removed from the model, the best $M_{k-1}$ model is chosen based on the RSS or $R^2$, all $M_{0},..,M_{p}$ models are evaluated and the single best is chosen using cross-validaiton error, $C_{p}$, AIC, BIC, or adjusted $R^2$.  
+  
+  2. What features were selected by the forward stepwise method?  
+  
+  AtBat, Hits, Walks, CRBI, CWalks, DivisionW, and PutOuts.
+  
+  3. What features were selected by the backward stepwise method?  
+  
+  AtBat, Hits, Walks, CRuns, CWalks, DivisionW, and PutOuts.  
+

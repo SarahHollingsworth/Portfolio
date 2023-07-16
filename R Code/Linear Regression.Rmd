@@ -1,0 +1,157 @@
+---
+title: "Linear Regression"
+output:
+  word_document: default
+  html_document: default
+date: '2023-06-30'
+---
+
+
+Linear Regression 
+  
+  Use the lm() function to perform a simple linear regression with mpg as the response and horsepower as the predictor. Use the summary() function to print the results. Comment on the output.  
+  
+
+```{r}
+library(MASS)
+library(ISLR)
+Auto = Auto
+
+lm.fit = lm(mpg~horsepower, data=Auto)
+summary(lm.fit)
+```
+  
+  For example:  
+    i) Is there a relationship between the predictor and the response?  
+    
+    Yes, there is a relationship between the predictor and response variable.  WIth an R-square value of 0.6059, a F-statistic of 599.7 and an associated F-statistic p-value of 2.2e-16, all three indicate there is a statistically significant relationship between horsepower and mpg.  
+    
+    ii) How strong is the relationship between the predictor and the response?  
+    
+    The relationship is strong, as a F-statistic of 599.7 is far above the value of 1, which shows there is a strong relationship between mpg and horsepower.  Also, with an R-square of 0.6059, we can conclude that approximately 60 percent of the variability in mpg is explained by horsepower.  
+    
+    iii) Is the relationship between the predictor and the response positive or negative?  
+    
+    The relationship is negative, with a negative estimated value for horsepower this indicates as the value of horsepower increase, mpg will decrease in value.  
+    
+    iv) What is the predicted mpg associated with a horsepower of 98? What are the associated 95 % confidence and prediction intervals?  
+    
+```{r}
+predict(lm_fit, data.frame(horsepower=98), interval="confidence")
+
+predict(lm_fit, data.frame(horsepower=98), interval="prediction")
+```
+  
+  The predicted mpg is 24.47, when horsepower is 98.
+  With 95% confidence, the average mpg when horsepower is 98 is between 23.97 and 24.96
+  With 95% confidence, the mpg when horsepower is 98 is between 14.81 and 34.12
+  
+  b) Plot the response and the predictor. Use the abline() function to display the least squares regression line.  
+  
+```{r}
+attach(Auto)
+plot(horsepower, mpg, main="Plot of mpg vs. horsepower", xlab="horsepower", ylab="mpg")
+abline(lm.fit, lwd=3, col="blue")
+```  
+  
+  c) Use the plot() function to produce diagnostic plots of the least squares regression fit. Comment on any problems you see with the fit. 
+  
+```{r}
+par(mfrow=c(2,2))
+plot(lm.fit)
+```  
+  
+  In the Residuals vs Fitted model there appears to be some non-linearity in our dataset.  Also, the Residuals vs Leverage plot indicates there may be some outliers and high leverage variables in our dataset.  
+   
+  
+  
+Multiple Linear Regression  
+  
+  a) Produce a scatterplot matrix which includes all of the variables in the data set.  
+  
+```{r}
+pairs(Auto)
+```  
+  
+  b) Compute the matrix of correlations between the variables using the function cor(). You will need to exclude the name variable, cor() which is qualitative.  
+  
+```{r}
+names(Auto)
+cor(Auto[1:8])
+```    
+  
+  c) Use the lm() function to perform a multiple linear regression with mpg as the response and all other variables except name as the predictors. Use the summary() function to print the results.  Comment on the output.  
+  
+```{r}
+lm.fit2 = lm(mpg~.-name, data=Auto)
+summary(lm.fit2)
+```   
+  
+  For instance:  
+    i) Is there a relationship between the predictors and the response?  
+    
+    With a F-statistic of 252.4 and an associated p-value of 2.2e-16, it appears there is a relationship between mpg and all other variables excluding name.  
+    
+    ii) Which predictors appear to have a statistically significant relationship to the response?  
+    
+    Based on the output, it appears displacement, weight, year and origin have a statistically significant relationship with mpg.  On the other hand it appears cylinders, horsepower, and acceleration do not have a statistically significant relationship with mpg.  
+    
+    iii) What does the coefficient for the year variable suggest?  
+    
+    When there is a one-unit increase in year, there is a corresponding 0.751 increase in mpg.  This can be interpreted as mpg was improved as the years progressed.  
+    
+
+  d) Use the plot() function to produce diagnostic plots of the linear regression fit. Comment on any problems you see with the fit. Do the residual plots suggest any unusually large outliers? Does the leverage plot identify any observations with unusually high leverage?  
+  
+```{r}
+par(mfrow=c(2,2))
+plot(lm.fit2)
+```  
+  
+  The Residuals vs Fitted plot indicates there is non-linearity in the dataset and the Residuals vs Leverage plot indicates there are several outliers and an unusually high leverage point.  
+  
+  
+  e) Use the * and : symbols to fit linear regression models with interaction effects. Do any interactions appear to be statistically significant?  
+  
+```{r}
+lm.fit3 = lm(mpg~displacement:weight + cylinders*origin, data=Auto)
+summary(lm.fit3)
+lm.fit4 = lm(mpg~displacement*weight + cylinders:origin, data=Auto)
+summary(lm.fit4)
+lm.fit5 = lm(mpg~displacement:origin + cylinders*weight, data=Auto)
+summary(lm.fit5)
+lm.fit6 = lm(mpg~displacement*origin + cylinders:weight, data=Auto)
+summary(lm.fit6)
+```  
+  
+  Based on the results it appears the interaction between displacement and weight, cylinders and weight, and displacement and origin all appear to be statistically significant.  
+  
+  f)  Try a few different transformations of the variables, such as log(X), √X, X2. Comment on your findings.  
+  
+```{r}
+lm.fit7 = lm(mpg~displacement+weight, data=Auto)
+summary(lm.fit7)
+lm.fit8 = lm(mpg~displacement+I(displacement^2)+weight, data=Auto)
+summary(lm.fit8)
+lm.fit9 = lm(mpg~displacement+log(displacement)+weight, data=Auto)
+summary(lm.fit9)
+lm.fit10 = lm(mpg~displacement+sqrt(displacement)+weight, data=Auto)
+summary(lm.fit10)
+lm.fit11 = lm(mpg~displacement+weight+I(weight^2), data=Auto)
+summary(lm.fit11)
+lm.fit12 = lm(mpg~displacement+weight+log(weight), data=Auto)
+summary(lm.fit12)
+lm.fit13 = lm(mpg~displacement+weight+sqrt(weight), data=Auto)
+summary(lm.fit13)
+lm.fit14 = lm(mpg~I(displacement^2)+I(weight^2), data=Auto)
+summary(lm.fit14)
+lm.fit15 = lm(mpg~log(displacement)+log(weight), data=Auto)
+summary(lm.fit15)
+lm.fit16 = lm(mpg~sqrt(displacement)+sqrt(weight), data=Auto)
+summary(lm.fit16)
+anova(lm.fit7, lm.fit8, lm.fit9, lm.fit10, lm.fit11, lm.fit12, lm.fit13, lm.fit14, lm.fit15, lm.fit16)
+```  
+
+  Based on the responses it appears the models which included the logarithmic function appear to produce models which are better at explaining the variance in mpg.  Both models with the log() function produce higher F-statistic numbers and higher R-square values.  
+
+  

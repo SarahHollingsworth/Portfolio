@@ -1,0 +1,160 @@
+---
+title: "R Commands
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+date: '2022-07-01'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+1. Basic R Commands  
+
+
+  a) Create a vector of numbers and store into a variable x  
+```{r}
+x <- seq(1,10)
+print(x)
+```
+  b) Determine the length of the vector x created in part a  
+  
+```{r}
+length(x)
+```
+  c) Create a matrix data structure with 6 numbers, 3 rows and 3 columns  
+```{r}
+a <- matrix(c(1:6), 3, 3)
+print(a)
+```
+  d) Use the rnorm() function to create 20 random variables and store in y. Repeat this step and store another 20 random variables in x. Complete the cor() between the two vectors.  
+```{r}
+y <- rnorm(20)
+print(y)
+x <- rnorm(20)
+print(x)
+cor(x,y)
+``` 
+  e) Complete the mean, standard deviation, and square root for vectors x and y created in part d.   
+```{r}
+mean(x)
+sd(x)
+sqrt(x)
+mean(y)
+sd(y)
+sqrt(y)
+```
+  
+Part 2:  Data Structures and Indexing Data
+2. Create the outlined data structures and index as described in each step. You may screen shot the results or cut and paste the results into your Word document.  
+
+
+  a) Create a matrix using any integers with 6 rows and 6 columns. Index the first column and index the 3 rows.  
+```{r}
+mat_a <- matrix(c(1:36), 6, 6)
+print(mat_a)
+mat_a[ ,1]
+mat_a[1:3, ]
+```
+  b) Create a list using a vector, a factor, and a 2 x 2 matrix. Index the 2nd object. Index the [2,2] position of the matrix in the list
+```{r}
+v <- seq(1, 10)
+f <- factor(c("freshman", "sophmore", "freshman", "junior", "senior"))
+m <- matrix(c(1:4), 2, 2)
+final_l <- list(v, f, m)
+print(final_l)
+final_l[[2]]
+final_l[[3]][2, 2]
+```
+ c) Create a 4 attribute/ 6 row dataframe using vectors created with the concatenate function c(). Two of the 4 attributes should be numeric and two should be character
+```{r}
+name <- c("Bob", "Jim", "Susie", "Jane", "Tammy", "John")
+age <- c(52, 19, 22, 67, 18, 21)
+gpa <- c(3.58, 4.00, 3.15, 2.97, 3.84, 3.38)
+degree <- c("English", "Music", "Science", "Classics", "Computer Science", "History")
+df <- data.frame(name, age, gpa, degree)
+print(df)
+``` 
+ d) Index the dataframe using the [n,n] notation and with the dataframe$attributename notation using 4 examples
+```{r}
+df[4, 1]
+df[1, 3]
+df[2, 4]
+df[6, 2]
+
+df$name[4]
+df$gpa[1]
+df$degree[2]
+df$age[6]
+``` 
+Part 3:  Visualizations in R
+3. In the ISLR text, complete the lab in section 2.3.4 using the ISLR library and Auto data set. You may screen shot the results or cut and paste the results into your Word document.  
+ 
+```{r}
+auto <- read.table("Auto.data")
+
+fix(auto)
+
+auto <- read.table("Auto.data", header=T, na.strings="?")
+
+fix(auto)
+
+dim(auto)
+
+library(ISLR)
+auto <- ISLR::Auto
+
+fix(auto)
+
+auto[1:4, ]
+
+auto <- na.omit(auto)
+
+dim(auto)
+
+names(auto)
+```
+Part 4. Combining R with Analysis
+4. In the ISLR text, complete the lab in section 2.3.5 using the ISLR library and Auto data set. You may screen shot the results or cut and paste the results into your Word document.  
+```{r}
+
+plot(auto$cylinders, auto$mpg, xlim=c(0, 30), ylim=c(0, 50))
+
+attach(auto)
+
+plot(cylinders, mpg, xlim=c(0, 30), ylim=c(0, 50))
+
+cylinders = as.factor(cylinders)
+
+plot(cylinders, mpg)
+
+plot(cylinders, mpg, col="red")
+
+plot(cylinders, mpg, col="red", varwidth=T)
+
+plot(cylinders, mpg, col="red", varwidth=T, horizontal=T)
+
+plot(cylinders, mpg, col="red", varwidth=T, xlab="cylinders", ylab="MPG")
+
+hist(mpg)
+
+hist(mpg, col=2)
+
+hist(mpg, col=2, breaks=15)
+
+pairs(auto)
+
+pairs(~ mpg + displacement + horsepower + weight + acceleration)
+
+plot(horsepower, mpg)
+
+identify(horsepower, mpg, name)
+
+summary(auto)
+
+summary(mpg)
+
+```

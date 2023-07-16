@@ -1,0 +1,479 @@
+---
+title: "Final Project"
+output:
+  word_document: default
+  html_document: default
+date: "2022-07-28"
+---
+
+Sarah Hollingsworth   
+DATA 621   
+Franklin University   
+Final Project  
+
+The decision of a financial institution to extend credit to a customer is a complex one, which must consider the ability of a customer to repay the debt and weigh this against the potential profit for the financial institution.  As techniques in statistical modeling have improved, these models can be used to identify potential patterns of behavior which make a customer more likely to become delinquent.  In this paper we will explore the German Credit Data dataset to compare classification accuracy using two classification techniques, the Support Vector Machine (SVM) and XX.  The German Credit Data dataset contains twenty attributes, which includes both quantitative and qualitative variables ranging from the customer’s age to the type of loan.  Utilizing classification accuracy and ROC curves, we will compare the different classification methods and make a recommendation on the best approach.
+I.	Introduction
+The history of lending practices has changed dramatically over the past one hundred years, from the introduction of credit cards and mortgages to the financial landscape around the turn of the twentieth century to the subprime mortgage collapse in 2007.  The ability for a statistical model to provide financial institutions a way of identifying customers who might default on their loan has broad reaching implications. (Zurada, Kunene, & Guan, 2014)  Financial institutions can lower their risk exposure by correctly classifying high-risk customers and at the same time the extension of credit to low risk customers is a cornerstone for how modern economies work.  (Zurada, Kunene, & Guan, 2014)  There are varying opinions around the spending habits of customers and how the extension of credit to high-risk customers can result in further risky behaviors and changes to the marketplace.  Some assert by extending credit to these high-risk individuals, consumers are using these loans not necessarily for items beyond their financial means but rather for basic living necessities. (Scott III, June 2007)  
+The use of classification models to predict a customer’s credit worthiness can also have negative implications, since there are several unintended assumptions made about customers in the creation of the model.  These can include the presumption high income earning customers with secondary educations are more likely to pay back a loan than a low-income earning customer with no secondary education. (Krishnamurthi, 2007)  With higher scrutiny being placed on financial institutions lending practices through such laws as the Fair Housing Act of 1968 , Community Reinvestment Act of 1977 and Equal Credit Opportunity Act of 1974.  The burden is put on financial institutions to demonstrate they do not treat customers in a disparate manner based on their age, sex, religion or other protected statuses.  When determining the factors to use in the classification model, financial institutions must take all of the above mentioned into consideration and weigh the risk and reward associated with each.
+
+II.	Data Exploration
+In the German Credit Data dataset there are 1000 observations which include seven quantitative predictor variables, thirteen qualitative predictor variables and the target variable.  The quantitative variables include the duration of the loan, the amount of the loan, the installment rate in percentage of total income, number of years in current residence, age, number of existing credits, and number of dependents.  The qualitative variables include status of their existing checking account, credit history, loan purpose, amount in savings or bonds, years in present employment, gender and marital status, property, other installment plans, employment status, telephone status, and foreign worker status.  Also included is the target variable, which indicates if the customer was approved or declined for the credit.  
+When creating the classification model one of the most important items to address first is if there is class imbalance in the dataset.  The distribution of our target variable indicates class imbalance does exists, with approximately thirty percent of the observations belonging to the minority class which contains declined customers. (Figure 2.1)  Class imbalance can lead to decreased accuracy in the model because it will be influenced by the majority class and will need to be accounted for in the final model. Among the exploratory  
+
+```{r}
+RNGkind(sample.kind = "Rounding")
+credit_df <- read.csv("C:\\Users\\rewar\\OneDrive\\Documents\\DATA 621\\Final Project\\german_credit.csv", header=TRUE)
+
+Credit = as.factor(ifelse(credit_df$V21==1, "Good", "Bad"))
+credit_df$V21 <- NULL
+credit_df <- data.frame(credit_df, Credit)
+colnames(credit_df) <- c("Index", "Stat_Ex_Chkg", "Loan_Term", "Cr_Hist", "Loan_Type", "Cr_Amt", "Sav_Acc_Bd", "Emp_Yrs", "Rate_Per_Dis_Inc", "Sex_Status", "Oth_Debtors", "Pres_Res_Since", "Property", "Age_Yrs", "Other_Plans", "Housing", "No_Exst_Cred", "Job", "Dependents", "Telephone", "Foreign_Wkr", "Credit")
+```
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+
+ggplot(data = credit_df) +
+  geom_bar(mapping = aes(x=Credit, fill=Credit)) +
+  labs(title="Distribution of Customer Credit", caption= "Figure 3.1", x="Customer Credit", y="Count") +
+  theme(plot.title = element_text(hjust=0.5)) + 
+  theme(plot.title = element_text(hjust=0.5)) +
+  theme(plot.title = element_text(size=12)) +
+  theme(axis.title = element_text(size=10)) +
+  theme(plot.caption = element_text(hjust=0.5))
+```
+
+variables, the status of a customer’s checking account showed a larger proportion of customers who had balances greater than two hundred deutschmarks or no existing checking account with the financial institution were more likely to have credit extended to them. (Figure 4.2)   While customers with balances less than two hundred deutschmarks or negative balances were equally likely to have credit approved or declined. (Figure 2.3)   
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+
+ggplot(data = credit_df) +
+  geom_bar(mapping = aes(x = Stat_Ex_Chkg, fill = Stat_Ex_Chkg)) +
+  labs(title="Distribution of Status of Existing Checking Acct", caption = "Figure 3.2", x="Status of Existing Checking Acct", y="Count") +
+  theme(plot.title = element_text(hjust=0.5)) + 
+  theme(plot.title = element_text(size=10)) +
+  theme(axis.title = element_text(size=9)) +
+  scale_fill_discrete(name = "Existing Checking Account", labels = c("< 0 DM", "0 <= ... <  200 DM", ">= 200 DM", "No Checking Account")) +
+  theme(legend.background = element_rect(size=0.5)) +
+  theme(legend.key.size = unit(0.2, 'cm')) +
+  theme(axis.ticks.x=element_blank()) +
+  theme(plot.caption = element_text(hjust=0.5))
+```
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+
+ggplot(data = credit_df) +
+  geom_bar(mapping = aes(x = Stat_Ex_Chkg, fill = Credit)) +
+  labs(title="Distribution of Status of Existing Checking Acct", caption = "Figure 3.3", x="Status of Existing Checking Acct", y="Count") +
+  theme(plot.title = element_text(hjust=0.5)) + 
+  theme(plot.title = element_text(size=12)) +
+  theme(axis.title = element_text(size=10)) +
+  theme(plot.caption = element_text(hjust=0.5))
+```
+ 
+There are several loan types which have a higher proportion of customers who had credit extended to them, including used cars, radio or television, domestic appliances, and retraining. (Figures 2.4 and 2.5)  When the dollar amount of the loan type is taken into account, it appears the amount of credit extended is distributed equally apart from furniture and equipment, repairs and retraining. (Figure 2.6)  These loan types are among the smallest proportions of customers represented in the dataset but may also introduce bias into the model.  The credit history of the customer is another important indicator into  
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+
+ggplot(data = credit_df) +
+  geom_bar(mapping = aes(x=Loan_Type, fill=Loan_Type)) +
+  labs(title="Distribution of Loan Type", caption = "Figure 3.4", x="Loan Type", y="Count") +
+  theme(plot.title = element_text(hjust=0.5)) + 
+  theme(plot.title = element_text(size=12)) +
+  theme(axis.title = element_text(size=10)) +
+  scale_fill_discrete(name = "Loan Type", labels = c("Car (new)", "Car (used)", "Furniture/Equipment", "Radio/Television", "Domestic Appliances", "Repairs", "Education", "(Vacation - does not exist?)", "Retraining", "Business", "Others")) +
+  theme(legend.background = element_rect(size=0.5)) +
+  theme(legend.key.size = unit(0.2, 'cm')) +
+  theme(axis.ticks.x=element_blank()) +
+  theme(plot.caption = element_text(hjust=0.5))
+```
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+
+ggplot(data = credit_df) +
+  geom_bar(mapping = aes(x=Loan_Type, fill=Credit)) +
+  labs(title="Distribution of Good/Bad Customer By Loan Type", caption = "Figure 3.5", x="Loan Type", y="Count") +
+  theme(plot.title = element_text(hjust=0.5)) + 
+  theme(plot.title = element_text(size=12)) +
+  theme(axis.title = element_text(size=10)) +
+  theme(plot.caption = element_text(hjust=0.5))
+```
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+
+ggplot(data = credit_df) +
+  geom_point(mapping = aes(x=Loan_Type, y=Cr_Amt, color=Loan_Type)) +
+  labs(title="Distribution of Loan Type by Credit Amount", caption = "Figure 3.6", x="Loan Type", y="Credit Amount") +
+  theme(plot.title = element_text(hjust=0.5)) + 
+  theme(plot.title = element_text(size=12)) +
+  theme(axis.title = element_text(size=10)) +
+  scale_colour_discrete(name = "Loan Type", labels = c("Car (new)", "Car (used)", "Furniture/Equipment", "Radio/Television", "Domestic Appliances", "Repairs", "Education", "(Vacation - does not exist?)", "Retraining", "Business", "Others")) +
+  theme(legend.background = element_rect(size=0.5)) +
+  theme(legend.key.size = unit(0.2, 'cm')) +
+  theme(axis.ticks.x=element_blank()) +
+  theme(plot.caption = element_text(hjust=0.5))
+```
+
+whether credit is extended or declined.  Figure 2.7 shows the largest number of customers who are extended credit are customers who have paid their credits until the current time or are considered critical accounts with credits at other banks.  Among these it appears the largest proportion of customers who are declined credit are those who have paid their credits until the current time. (Figure 2.8)  In Figure 2.9, we can see the loan term does not  
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+
+ggplot(data = credit_df) +
+  geom_bar(mapping = aes(x=Cr_Hist, fill=Cr_Hist)) +
+  labs(title="Distribution of Credit History", caption = "Figure 3.7", x="Credit History", y="Count") +
+  theme(plot.title = element_text(hjust=0.5)) + 
+  theme(plot.title = element_text(size=12)) +
+  theme(axis.title = element_text(size=10)) +
+  scale_fill_discrete(name = "Credit History", labels = c("No Cr Taken / All Paid Duly", "All Paid at Bank Duly", "Exist Cr Paid til Now", "Delay Pay Off in Past", "Critical Acct")) +
+  theme(legend.background = element_rect(size=0.5)) +
+  theme(legend.key.size = unit(0.2, 'cm')) +
+  theme(axis.ticks.x=element_blank()) +
+  theme(plot.caption = element_text(hjust=0.5))
+```
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+
+ggplot(data = credit_df) +
+  geom_bar(mapping = aes(x=Cr_Hist, fill=Credit)) +
+  labs(title="Distribution of Credit History by Good/Bad Customers", caption = "Figure 3.8", x="Credit History", y="Count") +
+  theme(plot.title = element_text(hjust=0.5)) + 
+  theme(plot.title = element_text(size=12)) +
+  theme(axis.title = element_text(size=10)) +
+  theme(plot.caption = element_text(hjust=0.5))
+```
+
+appear to have any influence over if the credit is approved or declined.  Similarly, the age of the customer does not appear to impact the decision of whether the customer is approved of declined. (Figure 2.10)  However, upon further inspection, the scatterplot in Figure 2.11  
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+
+ggplot(credit_df, aes(Loan_Term, colour=Credit)) +
+  geom_freqpoly(bins=20) +
+  labs(title="Distribution of Loan Term", caption = "Figure 3.9", x="Loan Term", y="Count") +
+  theme(plot.title = element_text(hjust=0.5)) + 
+  theme(plot.title = element_text(size=12)) +
+  theme(axis.title = element_text(size=10)) +
+  theme(plot.caption = element_text(hjust=0.5))
+```
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+
+ggplot(credit_df, aes(Cr_Amt, colour=Credit)) +
+  geom_freqpoly(bins=50) +
+  labs(title="Distribution of Credit Amount", caption = "Figure 3.10", x="Credit Amount", y="Count") +
+  theme(plot.title = element_text(hjust=0.5)) + 
+  theme(plot.title = element_text(size=12)) +
+  theme(axis.title = element_text(size=10)) +
+  theme(plot.caption = element_text(hjust=0.5))
+```
+
+shows older customers with smaller credit amounts tend to be approved more frequently than younger customers.  As the credit amount increases, the approval or decline rate for customers appears to be evenly dispersed.  The distribution of age for each loan type appears to be evenly distributed, there are outliers for five of the loan types which includes new and used cars, radio, television, appliances, and business. (Figure 2.12)  This could  
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+
+ggplot(credit_df, aes(Age_Yrs, colour=Credit)) +
+  geom_freqpoly(bins=25) +
+  labs(title="Distribution of Age", caption = "Figure 3.11", x="Age", y="Count") +
+  theme(plot.title = element_text(hjust=0.5)) + 
+  theme(plot.title = element_text(size=12)) +
+  theme(axis.title = element_text(size=10)) +
+  theme(plot.caption = element_text(hjust=0.5))
+```
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+
+ggplot(data = credit_df) +
+  geom_point(mapping = aes(x=Cr_Amt, y=Age_Yrs, color=Credit)) +
+  labs(title="Scatterplot of Credit Amount by Age", caption = "Figure 3.12", x="Credit Amount", y="Age") +
+  theme(plot.title = element_text(hjust=0.5)) + 
+  theme(plot.title = element_text(size=12)) +
+  theme(axis.title = element_text(size=10)) +
+  theme(plot.caption = element_text(hjust=0.5))
+```
+
+indicate if the customers age and loan type are included in the final model, it may exert undue influence in the final model.  The scatterplot in Figure 2.13 shows loans with smaller terms and credit amounts are approved more frequently than loans with higher credit amounts.  Alternatively, it also shows loans with longer terms and any credit amount are approved less frequently.  This  could be due to the reluctance of the financial institution to extend credit for longer periods of time.   
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+
+ggplot(data = credit_df, aes(x=Loan_Type, y=Age_Yrs)) +
+  geom_boxplot(mapping = aes(fill=Loan_Type)) +
+  labs(title="Distribution of Age for Loan Type", caption = "Figure 3.13", x="Loan Type", y="Age") +
+  theme(plot.title = element_text(hjust=0.5)) + 
+  theme(plot.title = element_text(size=12)) +
+  theme(axis.title = element_text(size=10)) +
+  scale_fill_discrete(name = "Loan Type", labels = c("Car (new)", "Car (used)", "Furniture/Equipment", "Radio/Television", "Domestic Appliances", "Repairs", "Education", "(Vacation - does not exist?)", "Retraining", "Business", "Others")) +
+  theme(legend.background = element_rect(size=0.5)) +
+  theme(legend.key.size = unit(0.2, 'cm')) +
+  theme(axis.ticks.x=element_blank()) +
+  theme(plot.caption = element_text(hjust=0.5))
+```
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+
+ggplot(data = credit_df) +
+  geom_point(mapping = aes(x=Loan_Term, y=Cr_Amt, color=Credit)) +
+  labs(title="Scatterplot of Loan Term by Credit Amount", caption = "Figure 3.14", x="Loan Term", y="Credit Amount") +
+  theme(plot.title = element_text(hjust=0.5)) + 
+  theme(plot.title = element_text(size=12)) +
+  theme(axis.title = element_text(size=10)) +
+  theme(plot.caption = element_text(hjust=0.5))
+```
+
+Feature importance was also assessed using both Random Forest and Gradient Boosting techniques to determine the influence of the variables on the accuracy of the model.  Prior 
+
+```{r}
+cols <- c("Stat_Ex_Chkg", "Cr_Hist", "Loan_Type", "Sav_Acc_Bd", "Emp_Yrs", "Sex_Status", "Oth_Debtors", "Property", "Other_Plans", "Housing", "Job", "Telephone", "Foreign_Wkr")
+credit_df[cols] <- lapply(credit_df[cols], factor)
+credit_df$Index <- NULL
+
+library(ROSE)
+set.seed(1)
+
+train = sample(1:nrow(credit_df), 0.7 * nrow(credit_df))
+credit_df_test = credit_df[-train,]
+Credit_test = credit_df$Credit[-train]
+over <- ovun.sample(Credit~., data=credit_df[train, ], method="under", p=0.5)$data
+table(over$Credit)
+
+library(randomForest)
+rf_df = randomForest(Credit~., data=over, importance=TRUE)
+varImpPlot(rf_df, cex=0.7, main = "Variable Importance", sub = "Figure 3.15")
+```
+
+to creating the models for both, the class imbalance discussed earlier was addressed by using an undersampling technique to randomly remove samples from the majority class to remove samples from the majority class in the training subset of data.  While undersampling will address the class imbalance in the dataset, this may result in underfitting of our model and leading us to miss important information.  The results from the Random Forest show the status of a customer's checking account, credit amount, loan term, age, and loan type, in that order, have the most influence. (Figure 2.15)  Gradient Boosting yields slightly different results, where the influence in descending order is loan type, credit amount, status of a customer’s checking account, loan term, and age. (Figure 2.16)  With the results of both Random Forest and Gradient Boosting providing the same top five predictor variables this is of note and will be considered when building our final model.  
+
+```{r}
+library(gbm)
+set.seed(1)
+
+over$Credit = as.numeric(ifelse(over$Credit=="Good", 0, 1))
+boost_credit_df = gbm(Credit~., data=over, distribution="bernoulli", 
+                      n.trees=2000, interaction.depth=4)
+summary(boost_credit_df)
+title(sub="Figure 3.16")
+over$Credit <- as.factor(ifelse(over$Credit==0, "Good", "Bad"))
+```
+
+
+```{r}
+library(tree)
+set.seed(1)
+tree_df <- tree(Credit~Stat_Ex_Chkg+Cr_Amt+Age_Yrs+Loan_Term+Loan_Type+Cr_Hist+Emp_Yrs+Property, data=over)
+plot(tree_df)
+text(tree_df, pretty=0, cex=0.5)
+title(sub="Figure 4.1", cex=0.7)
+train_base_tree = predict(tree_df, credit_df[train, ], type="class")
+table(test=train_base_tree, truth=credit_df[train, "Credit"])
+test_base_tree = predict(tree_df, newdata=credit_df[-train,], type="class")
+table(predict=test_base_tree,truth=Credit_test)
+```
+
+```{r}
+set.seed(1)
+cv_tree = cv.tree(tree_df, FUN=prune.misclass)
+cv_tree
+par(mfrow=c(1,2))
+plot(cv_tree$size, cv_tree$dev, type="b", sub="Figure 4.2")
+plot(cv_tree$k, cv_tree$dev, type="b", sub="Figure 4.3")
+```
+
+```{r}
+set.seed(1)
+par(mfrow=c(1,1))
+prune_credit_df = prune.misclass(tree_df, best=2)
+plot(prune_credit_df)
+title(sub="Figure 4.4", cex=10)
+text(prune_credit_df, pretty=0, cex=0.5)
+```
+
+```{r}
+set.seed(1)
+rf_df = randomForest(Credit~., data=credit_df[train,], mtry=5, ntree=500)
+ytest = predict(rf_df, credit_df[train, ], type="class")
+table(test=ytest, truth=credit_df[train, "Credit"])
+yhat_rf = predict(rf_df, newdata=credit_df[-train,], type="class")
+table(predict=yhat_rf, truth=Credit_test)
+```
+
+```{r}
+plot(rf_df, main="Random Forest Classification Error")
+legend("topright", legend=c("M", "OOB", "R"), cex=0.5, lty=c("dashed", "solid", "dotted"), col=c("red", "black", "green"))
+title(sub="Figure 5.1", cex=8)
+```
+
+```{r}
+library(party)
+r_tree <- ctree(Credit~., data=credit_df[train,])
+plot(r_tree, type="simple", pch=10, cex=8, sub="Figure 4.2")
+```
+
+```{r}
+set.seed(1)
+train_prune_test = predict(prune_credit_df, credit_df[train, ], type="class")
+table(test=train_prune_test, truth=credit_df[train, "Credit"])
+test_prune_tree = predict(prune_credit_df, newdata=credit_df[-train,], type="class")
+table(predict=test_prune_tree, truth=Credit_test)
+```
+
+```{r}
+set.seed(1)
+library(radiant)
+rand_for <- rforest(over, "Credit", c("Stat_Ex_Chkg", "Loan_Term", "Cr_Hist", "Loan_Type", "Cr_Amt", "Sav_Acc_Bd", "Emp_Yrs", "Rate_Per_Dis_Inc", "Sex_Status", "Oth_Debtors", "Pres_Res_Since", "Property", "Age_Yrs", "Other_Plans", "Housing", "No_Exst_Cred", "Job", "Dependents", "Telephone", "Foreign_Wkr"), type="classification", seed=1)
+
+cv_rf <- cv.rforest(rand_for, repeats=5, mtry=1:5, 
+           num.trees=c(25, 50, 100, 250, 500), min.node.size=1,
+           sample.fraction=NA, trace=TRUE, seed=1234)
+plot(cv_rf$`AUC (mean)`, main="Cross-Validation AUC (mean)", sub="Figure 4.2", xlab="Cross-Validation Model Index", ylab="AUC (mean)", cex.main=0.9, cex.lab=0.8, cex.sub=0.8)
+table_cv_rf <- as.data.frame(cv_rf)
+head(table_cv_rf, 10)
+```
+
+
+
+
+```{r}
+library(e1071)
+set.seed(1)
+svm_fit = svm(Credit~Stat_Ex_Chkg+Cr_Amt+Age_Yrs+Loan_Term+Loan_Type+Cr_Hist+Emp_Yrs+Property, data=over, kernel="linear", cost=0.1, scale=TRUE)
+summary(svm_fit)
+
+y_test = predict(svm_fit, credit_df[train, ], type="class")
+table(test=y_test, truth=credit_df[train, "Credit"])
+y_pred = predict(svm_fit, credit_df[-train,], type="class")
+table(predict=y_pred, truth=Credit_test)
+```
+
+```{r}
+set.seed(1)
+tune_lin_svm = tune(svm, Credit~Stat_Ex_Chkg+Cr_Amt+Age_Yrs+Loan_Term+Loan_Type+Cr_Hist+Emp_Yrs+Property, data=over, kernel="linear", 
+                    ranges=list(cost=c(0.001, 0.01, 0.1, 1, 5, 10, 100)))
+summary(tune_lin_svm)
+tune_lin_svm
+best_model = tune_lin_svm$best.model
+summary(best_model)
+y_test_tune = predict(best_model, credit_df[train, ], type="class")
+table(test=y_test_tune, truth=credit_df[train, "Credit"])
+y_pred = predict(best_model, credit_df[-train,], type="class")
+table(predict=y_pred, truth=Credit_test)
+```
+
+
+```{r}
+library(ROCR)
+rocplot = function(pred, truth, ...){
+  predob = prediction(pred, truth)
+  perf = performance(predob, "tpr", "fpr")
+  plot(perf, ...)
+  title(sub="Figure 5.2", cex.main=0.9, cex.lab=0.8, cex.sub=0.8)
+  legend("topright", legend=c("C=0.01", "C=1", "C=10", "C=0.001"),
+         cex=0.5, lty=c("solid", "solid", "solid", "solid"), 
+         col=c("blue", "red", "green", "orange"))
+}
+
+svm_fit_opt = svm(Credit~., data=over, kernel="linear", cost=0.01, decision.values=T)
+fitted = attributes(predict(svm_fit_opt, over, decision.values=TRUE))$decision.values
+
+rocplot(fitted, over[ , "Credit"], main="Training Data")
+
+svm_flex_fit = svm(Credit~., data=over, kernel="linear", cost=1, decision.values=TRUE)
+fitted = attributes(predict(svm_flex_fit, over, decision.values=TRUE))$decision.values
+rocplot(fitted, over[, "Credit"], add=T, col="blue")
+
+svm_moreflex_fit = svm(Credit~., data=over, kernel="linear", cost=10, decision.values=TRUE)
+fitted = attributes(predict(svm_moreflex_fit, over, decision.values=TRUE))$decision.values
+rocplot(fitted, over[, "Credit"], add=T, col="red")
+
+svm_lessflex_fit = svm(Credit~., data=over, kernel="linear", cost=0.001, decision.values=TRUE)
+fitted = attributes(predict(svm_lessflex_fit, over, decision.values=TRUE))$decision.values
+rocplot(fitted, over[, "Credit"], add=T, col="green")
+
+svm_mostflex_fit = svm(Credit~., data=over, kernel="linear", cost=100, decision.values=TRUE)
+fitted = attributes(predict(svm_mostflex_fit, over, decision.values=TRUE))$decision.values
+rocplot(fitted, over[, "Credit"], add=T, col="orange")
+
+```
+
+
+```{r}
+library(ROCR)
+rocplot = function(pred, truth, ...){
+  predob = prediction(pred, truth)
+  perf = performance(predob, "tpr", "fpr")
+  plot(perf, ...)
+  title(sub="Figure 5.3", cex.main=0.9, cex.lab=0.8, cex.sub=0.8)
+  legend("topright", legend=c("C=0.01", "C=1", "C=10", "C=0.001"),
+         cex=0.5, lty=c("solid", "solid", "solid", "solid"), 
+         col=c("blue", "red", "green", "orange"))
+}
+
+svm_fit_opt = svm(Credit~., data=credit_df[-train, ], kernel="linear", cost=0.01, decision.values=T)
+fitted = attributes(predict(svm_fit_opt, credit_df[-train, ], decision.values=TRUE))$decision.values
+
+rocplot(fitted, credit_df[-train, "Credit"], main="Testing Data")
+
+svm_flex_fit = svm(Credit~., data=credit_df[-train, ], kernel="linear", cost=1, decision.values=TRUE)
+fitted = attributes(predict(svm_flex_fit, credit_df[-train, ], decision.values=TRUE))$decision.values
+rocplot(fitted, credit_df[-train, "Credit"], add=T, col="blue")
+
+svm_moreflex_fit = svm(Credit~., data=credit_df[-train, ], kernel="linear", cost=10, decision.values=TRUE)
+fitted = attributes(predict(svm_moreflex_fit, credit_df[-train, ], decision.values=TRUE))$decision.values
+rocplot(fitted, credit_df[-train, "Credit"], add=T, col="red")
+
+svm_lessflex_fit = svm(Credit~., data=credit_df[-train, ], kernel="linear", cost=0.001, decision.values=TRUE)
+fitted = attributes(predict(svm_lessflex_fit, credit_df[-train, ], decision.values=TRUE))$decision.values
+rocplot(fitted, credit_df[-train, "Credit"], add=T, col="green")
+
+svm_mostflex_fit = svm(Credit~., data=credit_df[-train, ], kernel="linear", cost=100, decision.values=TRUE)
+fitted = attributes(predict(svm_mostflex_fit, credit_df[-train, ], decision.values=TRUE))$decision.values
+rocplot(fitted, credit_df[-train, "Credit"], add=T, col="orange")
+```
+
+
+```{r, out.width="50%", out.height="50%"}
+library(pROC)
+rand_for_opt <- rforest(credit_df[train, ], "Credit", c("Stat_Ex_Chkg", "Loan_Term", "Cr_Hist", "Loan_Type", "Cr_Amt", "Sav_Acc_Bd", "Emp_Yrs", "Rate_Per_Dis_Inc", "Sex_Status", "Oth_Debtors", "Pres_Res_Since", "Property", "Age_Yrs", "Other_Plans", "Housing", "No_Exst_Cred", "Job", "Dependents", "Telephone", "Foreign_Wkr"), type="classification", mtry=2, min.node.size=1, num.trees=250, seed=1)
+tree_pred <- predict(rand_for_opt, credit_df[train, ], type="prob")[, 2]
+tree_roc <- roc(credit_df[train, "Credit"], tree_pred)
+plot(tree_roc, main="Training vs Test Data", sub="Figure 5.1", xlab="False positive rate", ylab="True positive rate", col="blue", cex.main=0.9, cex.lab=0.8, cex.sub=0.8, cex.axis=0.7)
+legend("topright", legend=c("Training", "Test"), cex=0.5, lty=c("solid", "solid"), col=c("blue", "red"))
+
+rand_for_test <- rforest(credit_df[-train, ], "Credit", c("Stat_Ex_Chkg", "Loan_Term", "Cr_Hist", "Loan_Type", "Cr_Amt", "Sav_Acc_Bd", "Emp_Yrs", "Rate_Per_Dis_Inc", "Sex_Status", "Oth_Debtors", "Pres_Res_Since", "Property", "Age_Yrs", "Other_Plans", "Housing", "No_Exst_Cred", "Job", "Dependents", "Telephone", "Foreign_Wkr"), type="classification", mtry=2, min.node.size=1, num.trees=250, seed=1)
+tree_pred_test <- predict(rand_for_test, credit_df[-train, ], type="prob")[, 2]
+tree_roc_test <- roc(credit_df[-train, "Credit"], tree_pred_test)
+plot(tree_roc_test, add=TRUE, col="red")
+```
+
+
+
+```{r}
+
+```
+
+
+

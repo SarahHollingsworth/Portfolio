@@ -1,0 +1,66 @@
+---
+title: "Decision Trees"
+output:
+  word_document: default
+  html_document: default
+date: '2023-06-18'
+---
+
+Decision Trees 
+
+```{r}
+RNGkind(sample.kind = "Rounding")
+library(tree)
+
+library(ISLR)
+attach(Carseats)
+High = as.factor(ifelse(Sales<=8, "No", "Yes"))
+
+Carseats = data.frame(Carseats, High)
+
+tree.carseats = tree(High~.-Sales, Carseats)
+
+summary(tree.carseats)
+
+plot(tree.carseats)
+text(tree.carseats, pretty=0, cex = 0.5)
+
+tree.carseats
+
+set.seed(2)
+train = sample(1:nrow(Carseats), 200)
+Carseats.test = Carseats[-train, ]
+High.test = High[-train]
+tree.carseats = tree(High~.-Sales, Carseats, subset=train)
+tree.pred = predict(tree.carseats, Carseats.test, type="class")
+table(tree.pred, High.test)
+(86+57)/200
+
+set.seed(3)
+cv.carseats = cv.tree(tree.carseats, FUN=prune.misclass)
+names(cv.carseats)
+cv.carseats
+
+par(mfrow=c(1,2))
+plot(cv.carseats$size, cv.carseats$dev, type="b", cex=0.5)
+plot(cv.carseats$k, cv.carseats$dev, type="b", cex=0.5)
+
+prune.carseats = prune.misclass(tree.carseats, best = 9)
+plot(prune.carseats)
+text(prune.carseats, pretty=0, cex = 0.5)
+
+tree.pred = predict(prune.carseats, Carseats.test, type="class")
+table(tree.pred, High.test)
+(94+60)/200
+
+prune.carseats = prune.misclass(tree.carseats, best=15)
+plot(prune.carseats)
+text(prune.carseats, pretty=0, cex = 0.5)
+tree.pred = predict(prune.carseats, Carseats.test, type="class")
+table(tree.pred, High.test)
+(86+62)/200
+
+```
+
+  
+

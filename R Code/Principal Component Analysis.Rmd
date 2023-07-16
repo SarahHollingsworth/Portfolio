@@ -1,0 +1,62 @@
+---
+title: "Principal Component Analysis"
+output:
+  word_document: default
+  html_document: default
+date: '2023-07-15'
+---
+
+Part 1:  Principal Components Analysis (PCA)    
+A. Define PCA and outline when it would be used  
+
+Principal Component Analysis is an unsupervised learning method which reduces the dimensionality of a dataset by projecting the features into a lower dimension.  This is accomplished by computing the principal component vectors of the data set and using these components to determine the most relevant features in the dataset.  Principal Component Analysis is used for exploratory data analysis and feature extraction to projects the features which have the most influence into a smaller feature space.  When a dataset has a large number of features, PCA helps identify which features have more influence and can be used in a model to provide the best accuracy with fewer features.  Principal components can also be used in the principal component regression model as predictors in the model, again this can be utilized to help reduce the noise in the dataset which may be impacting the accuracy of the model.   
+
+Part 2: Apply PCA  
+
+
+```{r}
+USArrests <- USArrests
+
+states = row.names(USArrests)
+states
+
+names(USArrests)
+
+apply(USArrests, 2, mean)
+
+apply(USArrests, 2, var)
+
+pr.out = prcomp(USArrests, scale=TRUE)
+
+names(pr.out)
+
+pr.out$center
+
+pr.out$scale
+
+pr.out$rotation
+
+dim(pr.out$x)
+
+biplot(pr.out, scale=0, cex=0.7)
+
+pr.out$rotation = -pr.out$rotation
+pr.out$x = -pr.out$x
+biplot(pr.out, scale=0, cex=0.7)
+
+pr.out$sdev
+
+pr.var = pr.out$sdev^2
+pr.var
+
+pve = pr.var / sum(pr.var)
+pve
+
+plot(pve, xlab="Principal Component", ylab="Proportion of Variance Explained", ylim=c(0,1), type='b')
+
+plot(cumsum(pve), xlab="Principal Component", ylab="Cumulative Proportion of Variance Explained", ylim=c(0,1), type='b')
+
+a <- c(1, 2, 8, -3)
+cumsum(a)
+
+```

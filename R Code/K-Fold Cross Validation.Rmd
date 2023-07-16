@@ -1,0 +1,45 @@
+---
+title: "K-Fold Cross Validation"
+output:
+  word_document: default
+  html_document: default
+date: '2023-07-04'
+---
+
+K-Fold Cross Validation 
+
+```{r}
+library(ISLR)
+glm.fit = glm(mpg~horsepower, data=Auto)
+coef(glm.fit)
+
+lm.fit = lm(mpg~horsepower, data=Auto)
+coef(lm.fit)
+
+library(boot)
+glm.fit = glm(mpg~horsepower, data=Auto)
+cv.err = cv.glm(Auto, glm.fit)
+cv.err$delta
+
+cv.error = rep(0,5)
+for(i in 1:5){
+  glm.fit = glm(mpg~poly(horsepower,i), data=Auto)
+  cv.error[i]=cv.glm(Auto, glm.fit)$delta[1]
+}
+cv.error
+
+set.seed(17)
+cv.error.10 = rep(0,10)
+for (i in 1:10){
+  glm.fit = glm(mpg~poly(horsepower,i), data=Auto)
+  cv.error.10[i] = cv.glm(Auto, glm.fit, K=10)$delta[1]
+}
+cv.error.10
+```
+  1.	Outline your observations on the LOOCV results. What results are achieved?  
+  
+  There is an improvement in the model when we move to the quadratic model, dropping from 24.23 to 19.25, however after the first drop, the MSE does not dramatically improve with higher polynomial values.  
+  
+  2.	Outline your observations on the k-fold cross validation results. What results are achieved? How does this differ from LOOCV?  
+  
+  The results are similar to LOOCV, which again shows the quadratic model drops the test MSE significantly from 24.21 to 19.19, and again after the first significant drop the remaining polynomials show some improvement but nothing akin to the quadratic fit.  

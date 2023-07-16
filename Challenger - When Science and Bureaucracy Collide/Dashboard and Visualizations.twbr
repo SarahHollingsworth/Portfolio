@@ -1,0 +1,2503 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20201.20.0219.0753                               -->
+<workbook source-build='2020.1.0 (20201.20.0219.0753)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <SheetIdentifierTracking />
+    <SortTagCleanup />
+    <VizInTooltipHideWorksheet />
+    <WindowsPersistSimpleIdentifiers />
+    <ZoneBackgroundTransparency />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource hasconnection='false' inline='true' name='Parameters' version='18.1'>
+      <aliases enabled='yes' />
+      <column caption='Maximum Turnaround Time for Launch Schedule' datatype='real' name='[Parameter 1]' param-domain-type='any' role='measure' type='quantitative' value='45.5'>
+        <calculation class='tableau' formula='45.5' />
+      </column>
+      <column caption='Maximum Turnaround Time' datatype='real' name='[Parameter 2]' param-domain-type='any' role='measure' type='quantitative' value='45.5'>
+        <calculation class='tableau' formula='45.5' />
+      </column>
+    </datasource>
+    <datasource caption='NASA Budget (Data 605 - Hollingsworth Assignment 10)' inline='true' name='federated.1yjp33b1yav3rn1d7ma3n1uzhjlt' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='Data 605 - Hollingsworth Assignment 10' name='excel-direct.1muckbo02vrdxu13hwp5p18gp4a7'>
+            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='Data/Final Project/Data 605 - Hollingsworth Assignment 10.xlsx' interpretationMode='0' password='' server='' validate='no' />
+          </named-connection>
+        </named-connections>
+        <relation connection='excel-direct.1muckbo02vrdxu13hwp5p18gp4a7' name='NASA Budget' table='[&apos;NASA Budget$&apos;]' type='table'>
+          <columns gridOrigin='A1:D31:no:A1:D31:0' header='yes' outcome='2'>
+            <column datatype='date' date-parse-format='yyyy' name='Calendar Year' ordinal='0' />
+            <column datatype='integer' name='Nominal Dollars (Millions)' ordinal='1' />
+            <column datatype='real' name='% of Fed Budget' ordinal='2' />
+            <column datatype='integer' name='2014 Constant Dollars (Millions)' ordinal='3' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[NASA Budget]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>2</attribute>
+              <attribute datatype='string' name='gridOrigin'>&quot;A1:D31:no:A1:D31:0&quot;</attribute>
+              <attribute datatype='boolean' name='header'>true</attribute>
+              <attribute datatype='integer' name='outcome'>2</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Calendar Year</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[Calendar Year]</local-name>
+            <parent-name>[NASA Budget]</parent-name>
+            <remote-alias>Calendar Year</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RUS_S2' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Nominal Dollars (Millions)</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Nominal Dollars (Millions)]</local-name>
+            <parent-name>[NASA Budget]</parent-name>
+            <remote-alias>Nominal Dollars (Millions)</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>% of Fed Budget</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[% of Fed Budget]</local-name>
+            <parent-name>[NASA Budget]</parent-name>
+            <remote-alias>% of Fed Budget</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>2014 Constant Dollars (Millions)</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[2014 Constant Dollars (Millions)]</local-name>
+            <parent-name>[NASA Budget]</parent-name>
+            <remote-alias>2014 Constant Dollars (Millions)</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <column datatype='real' name='[% of Fed Budget]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[2014 Constant Dollars (Millions)]' role='measure' type='quantitative' />
+      <column datatype='date' name='[Calendar Year]' role='dimension' type='quantitative' />
+      <column datatype='integer' name='[Nominal Dollars (Millions)]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column-instance column='[% of Fed Budget]' derivation='Sum' name='[sum:% of Fed Budget:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[2014 Constant Dollars (Millions)]' derivation='Sum' name='[sum:2014 Constant Dollars (Millions):qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Nominal Dollars (Millions)]' derivation='Sum' name='[sum:Nominal Dollars (Millions):qk]' pivot='key' type='quantitative' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.26506' measure-ordering='alphabetic' measure-percentage='0.472892' parameter-percentage='0.262048' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.1yjp33b1yav3rn1d7ma3n1uzhjlt].[sum:\% of Fed Budget:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.1yjp33b1yav3rn1d7ma3n1uzhjlt].[sum:2014 Constant Dollars (Millions):qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.1yjp33b1yav3rn1d7ma3n1uzhjlt].[sum:Nominal Dollars (Millions):qk]&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+    <datasource caption='Challenger Data Set (Data 605 - Hollingsworth Assignment 10)' inline='true' name='federated.1u235pz0j29m1k1f6nyw51we0as1' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='Data 605 - Hollingsworth Assignment 10' name='excel-direct.1anhsd51qp6sjg143shai11648a2'>
+            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='Data/Final Project/Data 605 - Hollingsworth Assignment 10.xlsx' interpretationMode='0' password='' server='' validate='no' />
+          </named-connection>
+          <named-connection caption='Delay Reason' name='excel-direct.1y0eaww1bhwzan1fbr00v13icimg'>
+            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='Data/Final Project/Delay Reason.xlsx' interpretationMode='0' password='' server='' validate='no' />
+          </named-connection>
+        </named-connections>
+        <relation join='right' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[Challenger Data Set].[Flight Number]' />
+              <expression op='[Delay Reason].[Flight Number]' />
+            </expression>
+          </clause>
+          <relation connection='excel-direct.1anhsd51qp6sjg143shai11648a2' name='Challenger Data Set' table='[&apos;Challenger Data Set$&apos;]' type='table'>
+            <columns gridOrigin='A1:AC26:no:A1:AC26:0' header='yes' outcome='2'>
+              <column datatype='string' name='Unique ID' ordinal='0' />
+              <column datatype='string' name='Flight Number' ordinal='1' />
+              <column datatype='string' name='Shuttle' ordinal='2' />
+              <column datatype='string' name='Launch Location' ordinal='3' />
+              <column datatype='string' name='Launch State' ordinal='4' />
+              <column datatype='date' name='Scheduled Flight Date' ordinal='5' />
+              <column datatype='date' name='Acutal Flight Date' ordinal='6' />
+              <column datatype='real' name='Delay Time (In Days)' ordinal='7' />
+              <column datatype='boolean' name='Technical Delay' ordinal='8' />
+              <column datatype='boolean' name='Weather Delay' ordinal='9' />
+              <column datatype='boolean' name='Remanifest Delay' ordinal='10' />
+              <column datatype='boolean' name='Orbiter Processing Facility Delay' ordinal='11' />
+              <column datatype='boolean' name='Schedule Delay' ordinal='12' />
+              <column datatype='integer' name='Total Number of Delays' ordinal='13' />
+              <column datatype='integer' name='Cargo Total (In Pounts)' ordinal='14' />
+              <column datatype='real' name='Flight Duration  (In Days)' ordinal='15' />
+              <column datatype='integer' name='Distance Traveled (In Miles)' ordinal='16' />
+              <column datatype='date' name='Day Rolled Out to Launch Pad' ordinal='17' />
+              <column datatype='integer' name='Time on Launch Pad (In Days)' ordinal='18' />
+              <column datatype='date' name='Landing Date' ordinal='19' />
+              <column datatype='integer' name='Turnaround Time (In Days)' ordinal='20' />
+              <column datatype='string' name='Temperature (in F)' ordinal='21' />
+              <column datatype='integer' name='Temperature (Value)' ordinal='22' />
+              <column datatype='real' name='Precipitation (In Inches)' ordinal='23' />
+              <column datatype='integer' name='Erosion  and Blow-by Incidents' ordinal='24' />
+              <column datatype='integer' name='Damage Index' ordinal='25' />
+              <column datatype='integer' name='Actual Depth of Erosion (in thousandths)' ordinal='26' />
+              <column datatype='integer' name='Pressure (PSI) Field' ordinal='27' />
+              <column datatype='integer' name='Pressure (PSI) Nozzle' ordinal='28' />
+            </columns>
+          </relation>
+          <relation connection='excel-direct.1y0eaww1bhwzan1fbr00v13icimg' name='Delay Reason' table='[&apos;Delay Reason$&apos;]' type='table'>
+            <columns gridOrigin='A1:B32:no:A1:B32:0' header='yes' outcome='6'>
+              <column datatype='string' name='Flight Number' ordinal='0' />
+              <column datatype='string' name='Delay Type' ordinal='1' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[Actual Depth of Erosion (in thousandths)]' value='[Challenger Data Set].[Actual Depth of Erosion (in thousandths)]' />
+          <map key='[Acutal Flight Date]' value='[Challenger Data Set].[Acutal Flight Date]' />
+          <map key='[Cargo Total (In Pounts)]' value='[Challenger Data Set].[Cargo Total (In Pounts)]' />
+          <map key='[Damage Index]' value='[Challenger Data Set].[Damage Index]' />
+          <map key='[Day Rolled Out to Launch Pad]' value='[Challenger Data Set].[Day Rolled Out to Launch Pad]' />
+          <map key='[Delay Time (In Days)]' value='[Challenger Data Set].[Delay Time (In Days)]' />
+          <map key='[Delay Type]' value='[Delay Reason].[Delay Type]' />
+          <map key='[Distance Traveled (In Miles)]' value='[Challenger Data Set].[Distance Traveled (In Miles)]' />
+          <map key='[Erosion  and Blow-by Incidents]' value='[Challenger Data Set].[Erosion  and Blow-by Incidents]' />
+          <map key='[Flight Duration  (In Days)]' value='[Challenger Data Set].[Flight Duration  (In Days)]' />
+          <map key='[Flight Number (Delay Reason)]' value='[Delay Reason].[Flight Number]' />
+          <map key='[Flight Number]' value='[Challenger Data Set].[Flight Number]' />
+          <map key='[Landing Date]' value='[Challenger Data Set].[Landing Date]' />
+          <map key='[Launch Location]' value='[Challenger Data Set].[Launch Location]' />
+          <map key='[Launch State]' value='[Challenger Data Set].[Launch State]' />
+          <map key='[Orbiter Processing Facility Delay]' value='[Challenger Data Set].[Orbiter Processing Facility Delay]' />
+          <map key='[Precipitation (In Inches)]' value='[Challenger Data Set].[Precipitation (In Inches)]' />
+          <map key='[Pressure (PSI) Field]' value='[Challenger Data Set].[Pressure (PSI) Field]' />
+          <map key='[Pressure (PSI) Nozzle]' value='[Challenger Data Set].[Pressure (PSI) Nozzle]' />
+          <map key='[Remanifest Delay]' value='[Challenger Data Set].[Remanifest Delay]' />
+          <map key='[Schedule Delay]' value='[Challenger Data Set].[Schedule Delay]' />
+          <map key='[Scheduled Flight Date]' value='[Challenger Data Set].[Scheduled Flight Date]' />
+          <map key='[Shuttle]' value='[Challenger Data Set].[Shuttle]' />
+          <map key='[Technical Delay]' value='[Challenger Data Set].[Technical Delay]' />
+          <map key='[Temperature (Value)]' value='[Challenger Data Set].[Temperature (Value)]' />
+          <map key='[Temperature (in F)]' value='[Challenger Data Set].[Temperature (in F)]' />
+          <map key='[Time on Launch Pad (In Days)]' value='[Challenger Data Set].[Time on Launch Pad (In Days)]' />
+          <map key='[Total Number of Delays]' value='[Challenger Data Set].[Total Number of Delays]' />
+          <map key='[Turnaround Time (In Days)]' value='[Challenger Data Set].[Turnaround Time (In Days)]' />
+          <map key='[Unique ID]' value='[Challenger Data Set].[Unique ID]' />
+          <map key='[Weather Delay]' value='[Challenger Data Set].[Weather Delay]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>Unique ID</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Unique ID]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Unique ID</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Flight Number</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Flight Number]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Flight Number</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Shuttle</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Shuttle]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Shuttle</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Launch Location</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Launch Location]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Launch Location</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Launch State</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Launch State]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Launch State</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Scheduled Flight Date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[Scheduled Flight Date]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Scheduled Flight Date</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Acutal Flight Date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[Acutal Flight Date]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Acutal Flight Date</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Delay Time (In Days)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Delay Time (In Days)]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Delay Time (In Days)</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Technical Delay</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[Technical Delay]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Technical Delay</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WINBOOL&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Weather Delay</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[Weather Delay]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Weather Delay</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WINBOOL&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Remanifest Delay</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[Remanifest Delay]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Remanifest Delay</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WINBOOL&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Orbiter Processing Facility Delay</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[Orbiter Processing Facility Delay]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Orbiter Processing Facility Delay</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WINBOOL&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Schedule Delay</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[Schedule Delay]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Schedule Delay</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WINBOOL&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Total Number of Delays</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Total Number of Delays]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Total Number of Delays</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Cargo Total (In Pounts)</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Cargo Total (In Pounts)]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Cargo Total (In Pounts)</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Flight Duration  (In Days)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Flight Duration  (In Days)]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Flight Duration  (In Days)</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Distance Traveled (In Miles)</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Distance Traveled (In Miles)]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Distance Traveled (In Miles)</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Day Rolled Out to Launch Pad</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[Day Rolled Out to Launch Pad]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Day Rolled Out to Launch Pad</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Time on Launch Pad (In Days)</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Time on Launch Pad (In Days)]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Time on Launch Pad (In Days)</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Landing Date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[Landing Date]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Landing Date</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;DATE&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Turnaround Time (In Days)</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Turnaround Time (In Days)]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Turnaround Time (In Days)</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Temperature (in F)</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Temperature (in F)]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Temperature (in F)</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Temperature (Value)</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Temperature (Value)]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Temperature (Value)</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Precipitation (In Inches)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Precipitation (In Inches)]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Precipitation (In Inches)</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Erosion  and Blow-by Incidents</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Erosion  and Blow-by Incidents]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Erosion  and Blow-by Incidents</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Damage Index</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Damage Index]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Damage Index</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Actual Depth of Erosion (in thousandths)</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Actual Depth of Erosion (in thousandths)]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Actual Depth of Erosion (in thousandths)</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Pressure (PSI) Field</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Pressure (PSI) Field]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Pressure (PSI) Field</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Pressure (PSI) Nozzle</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Pressure (PSI) Nozzle]</local-name>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias>Pressure (PSI) Nozzle</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Challenger Data Set]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>1</attribute>
+              <attribute datatype='string' name='gridOrigin'>&quot;A1:AC26:no:A1:AC26:0&quot;</attribute>
+              <attribute datatype='boolean' name='header'>true</attribute>
+              <attribute datatype='integer' name='outcome'>2</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Flight Number</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Flight Number (Delay Reason)]</local-name>
+            <parent-name>[Delay Reason]</parent-name>
+            <remote-alias>Flight Number</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Delay Type</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Delay Type]</local-name>
+            <parent-name>[Delay Reason]</parent-name>
+            <remote-alias>Delay Type</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Delay Reason]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>0</attribute>
+              <attribute datatype='string' name='gridOrigin'>&quot;A1:B32:no:A1:B32:0&quot;</attribute>
+              <attribute datatype='boolean' name='header'>true</attribute>
+              <attribute datatype='integer' name='outcome'>6</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='string' name='[:Measure Names]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Calculation_853995121078984726:qk]&quot;' value='Additional Delay' />
+          <alias key='&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Calculation_853995121962115105:qk]&quot;' value='Time on Pad' />
+          <alias key='&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:usr:Calculation_853995121052520458:qk]&quot;' value='Technical' />
+          <alias key='&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:usr:Calculation_853995121055002635:qk]&quot;' value='Weather' />
+          <alias key='&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:usr:Calculation_853995121055244300:qk]&quot;' value='Schedule' />
+          <alias key='&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:usr:Calculation_853995121056149520:qk]&quot;' value='Orbiter' />
+          <alias key='&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:usr:Calculation_853995121056423953:qk]&quot;' value='Remanifest' />
+          <alias key='&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[sum:Calculation_853995121078984726:qk]&quot;' value='Delay (in Days)' />
+          <alias key='&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[sum:Calculation_853995121962115105:qk]&quot;' value='Time on Launch Pad' />
+          <alias key='&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[usr:Calculation_853995121052520458:qk]&quot;' value='Technical Delay' />
+          <alias key='&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[usr:Calculation_853995121055002635:qk]&quot;' value='Weather Delay' />
+          <alias key='&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[usr:Calculation_853995121055244300:qk]&quot;' value='Schedule Delay' />
+          <alias key='&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[usr:Calculation_853995121056149520:qk]&quot;' value='Orbiter Delay' />
+          <alias key='&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[usr:Calculation_853995121056423953:qk]&quot;' value='Remanifest Delay' />
+        </aliases>
+      </column>
+      <column caption='Acutal Flight Date String' datatype='string' datatype-customized='true' name='[Acutal Flight Date (copy)_853995120870092802]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='STR([Acutal Flight Date])' />
+      </column>
+      <column datatype='date' name='[Acutal Flight Date]' role='dimension' type='ordinal' />
+      <column caption='Remanifest Delay  Boolean' datatype='real' name='[Calculation_647955436620685312]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{ FIXED [Remanifest Delay] : SUM( IF TRUE THEN 1. ELSE 0. END )}' />
+      </column>
+      <column caption='Schedule Delay Boolean' datatype='real' name='[Calculation_647955436620795905]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{ FIXED [Schedule Delay] : SUM( IF TRUE THEN 1. ELSE 0. END )}' />
+      </column>
+      <column caption='Technical Delay Boolean' datatype='real' name='[Calculation_647955436620857346]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{ FIXED [Technical Delay] : SUM( IF TRUE THEN 1. ELSE 0. END )}' />
+      </column>
+      <column caption='Weather Delay Count' datatype='real' name='[Calculation_647955436620931075]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{ FIXED [Weather Delay] : SUM( IF TRUE THEN 1. ELSE 0. END )}' />
+      </column>
+      <column caption='Orbiter Processing Facility Delay Boolean' datatype='real' name='[Calculation_647955436620984324]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{ FIXED [Orbiter Processing Facility Delay] : SUM( IF TRUE THEN 1. ELSE 0. END )}' />
+      </column>
+      <column caption='Flight Date Delay' datatype='integer' name='[Calculation_853995121029726212]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Acutal Flight Date]-[Scheduled Flight Date]' />
+      </column>
+      <column caption='Technical Delay Count' datatype='integer' name='[Calculation_853995121045016582]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='COUNT(IF CONTAINS([Delay Type], &quot;Technical&quot;) THEN 1 END )' />
+      </column>
+      <column caption='Remanifest Dekay Count' datatype='integer' name='[Calculation_853995121051316231]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='COUNT(IF CONTAINS([Delay Type], &quot;Remanifest&quot;) THEN 1 END )' />
+      </column>
+      <column caption='Orbiter Processing Facility Delay Count' datatype='integer' name='[Calculation_853995121051754504]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='COUNT(IF CONTAINS([Delay Type], &quot;Orbiter Processing Facility&quot;) THEN 1 END )' />
+      </column>
+      <column caption='Schedule Delay Count' datatype='integer' name='[Calculation_853995121051951113]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='COUNT(IF CONTAINS([Delay Type], &quot;Schedule&quot;) THEN 1 END )' />
+      </column>
+      <column caption='Sum of Technical Delay' datatype='integer' name='[Calculation_853995121052520458]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM(IF CONTAINS([Delay Type], &quot;Technical&quot;) THEN 1 END )' />
+      </column>
+      <column caption='Sum of Weather Delay' datatype='integer' name='[Calculation_853995121055002635]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM(IF CONTAINS([Delay Type], &quot;Weather&quot;) THEN 1 END )' />
+      </column>
+      <column caption='Sum of Schedule Delay' datatype='integer' name='[Calculation_853995121055244300]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM(IF CONTAINS([Delay Type], &quot;Schedule&quot;) THEN 1 END )' />
+      </column>
+      <column caption='Sum of Orbiter Delay' datatype='integer' name='[Calculation_853995121056149520]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM(IF CONTAINS([Delay Type], &quot;Orbiter Processing&quot;) THEN 1 END )' />
+      </column>
+      <column caption='Sum of Remanifest Delay' datatype='integer' name='[Calculation_853995121056423953]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM(IF CONTAINS([Delay Type], &quot;Remanifest&quot;) THEN 1 END )' />
+      </column>
+      <column caption='Delay Calculation' datatype='integer' name='[Calculation_853995121078984726]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Acutal Flight Date]-[Scheduled Flight Date]' />
+      </column>
+      <column caption='Schedule Flight Range' datatype='date' name='[Calculation_853995121377706008]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='DATE(IF YEAR([Scheduled Flight Date])=1981-1986&#13;&#10;THEN [Scheduled Flight Date]&#13;&#10;END)' />
+      </column>
+      <column caption='Actual Flight Range' datatype='date' name='[Calculation_853995121378893850]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='DATE(IF YEAR([Acutal Flight Date])=1981-1986&#13;&#10;THEN [Acutal Flight Date]&#13;&#10;END)' />
+      </column>
+      <column caption='Distinct Actual Flights' datatype='integer' name='[Calculation_853995121664430107]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='COUNTD([Acutal Flight Date])' />
+      </column>
+      <column caption='Distinct Scheduled Flights' datatype='integer' name='[Calculation_853995121664675868]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='COUNTD([Scheduled Flight Date])' />
+      </column>
+      <column caption='Scheduled Amount of Time' datatype='integer' name='[Calculation_853995121675190301]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Scheduled Flight Date]-[Day Rolled Out to Launch Pad]' />
+      </column>
+      <column caption='Original Time' datatype='integer' name='[Calculation_853995121700880416]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Scheduled Flight Date]-[Day Rolled Out to Launch Pad]' />
+      </column>
+      <column caption='Original Time on Launch Pad' datatype='integer' name='[Calculation_853995121962115105]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Scheduled Flight Date]-[Day Rolled Out to Launch Pad]' />
+      </column>
+      <column caption='Total Time on Launch Pad' datatype='integer' name='[Calculation_853995121964572706]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Acutal Flight Date]-[Day Rolled Out to Launch Pad]' />
+      </column>
+      <column datatype='real' name='[Delay Time (In Days)]' role='measure' type='quantitative' />
+      <column datatype='string' name='[Launch State]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column datatype='date' name='[Scheduled Flight Date]' role='dimension' type='ordinal' />
+      <column datatype='integer' name='[Time on Launch Pad (In Days)]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[Total Number of Delays]' role='measure' type='quantitative' />
+      <column-instance column='[Calculation_853995121078984726]' derivation='Avg' name='[avg:Calculation_853995121078984726:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121675190301]' derivation='Avg' name='[avg:Calculation_853995121675190301:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121700880416]' derivation='Avg' name='[avg:Calculation_853995121700880416:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121962115105]' derivation='Avg' name='[avg:Calculation_853995121962115105:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Delay Time (In Days)]' derivation='Avg' name='[avg:Delay Time (In Days):qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Total Number of Delays]' derivation='Avg' name='[avg:Total Number of Delays:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121029726212]' derivation='Sum' forecast-column-base='[sum:Calculation_853995121029726212:qk]' forecast-column-type='forecast-value' name='[fVal:sum:Calculation_853995121029726212:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121045016582]' derivation='User' forecast-column-base='[usr:Calculation_853995121045016582:qk]' forecast-column-type='forecast-value' name='[fVal:usr:Calculation_853995121045016582:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121051316231]' derivation='User' forecast-column-base='[usr:Calculation_853995121051316231:qk]' forecast-column-type='forecast-value' name='[fVal:usr:Calculation_853995121051316231:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121052520458]' derivation='User' forecast-column-base='[usr:Calculation_853995121052520458:qk]' forecast-column-type='forecast-value' name='[fVal:usr:Calculation_853995121052520458:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121055002635]' derivation='User' forecast-column-base='[usr:Calculation_853995121055002635:qk]' forecast-column-type='forecast-value' name='[fVal:usr:Calculation_853995121055002635:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121055244300]' derivation='User' forecast-column-base='[usr:Calculation_853995121055244300:qk]' forecast-column-type='forecast-value' name='[fVal:usr:Calculation_853995121055244300:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121056149520]' derivation='User' forecast-column-base='[usr:Calculation_853995121056149520:qk]' forecast-column-type='forecast-value' name='[fVal:usr:Calculation_853995121056149520:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121056423953]' derivation='User' forecast-column-base='[usr:Calculation_853995121056423953:qk]' forecast-column-type='forecast-value' name='[fVal:usr:Calculation_853995121056423953:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Forecast Indicator]' derivation='None' forecast-column-base='[Forecast Indicator]' forecast-column-type='forecast-indicator' name='[none:Forecast Indicator:nk]' pivot='key' type='nominal' />
+      <column-instance column='[Calculation_647955436620795905]' derivation='Sum' name='[sum:Calculation_647955436620795905:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_647955436620857346]' derivation='Sum' name='[sum:Calculation_647955436620857346:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_647955436620931075]' derivation='Sum' name='[sum:Calculation_647955436620931075:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_647955436620984324]' derivation='Sum' name='[sum:Calculation_647955436620984324:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121029726212]' derivation='Sum' name='[sum:Calculation_853995121029726212:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121078984726]' derivation='Sum' name='[sum:Calculation_853995121078984726:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121675190301]' derivation='Sum' name='[sum:Calculation_853995121675190301:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121700880416]' derivation='Sum' name='[sum:Calculation_853995121700880416:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121962115105]' derivation='Sum' name='[sum:Calculation_853995121962115105:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121964572706]' derivation='Sum' name='[sum:Calculation_853995121964572706:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Delay Time (In Days)]' derivation='Sum' name='[sum:Delay Time (In Days):qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Number of Records]' derivation='Sum' name='[sum:Number of Records:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Time on Launch Pad (In Days)]' derivation='Sum' name='[sum:Time on Launch Pad (In Days):qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Total Number of Delays]' derivation='Sum' name='[sum:Total Number of Delays:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121045016582]' derivation='User' name='[usr:Calculation_853995121045016582:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121051316231]' derivation='User' name='[usr:Calculation_853995121051316231:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121052520458]' derivation='User' name='[usr:Calculation_853995121052520458:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121055002635]' derivation='User' name='[usr:Calculation_853995121055002635:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121055244300]' derivation='User' name='[usr:Calculation_853995121055244300:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121056149520]' derivation='User' name='[usr:Calculation_853995121056149520:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121056423953]' derivation='User' name='[usr:Calculation_853995121056423953:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121664430107]' derivation='User' name='[usr:Calculation_853995121664430107:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_853995121664675868]' derivation='User' name='[usr:Calculation_853995121664675868:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Acutal Flight Date]' derivation='Year' name='[yr:Acutal Flight Date:ok]' pivot='key' type='ordinal' />
+      <column-instance column='[Scheduled Flight Date]' derivation='Year' name='[yr:Scheduled Flight Date:ok]' pivot='key' type='ordinal' />
+      <group caption='Tooltip (YEAR(Acutal Flight Date))' hidden='true' name='[Tooltip (YEAR(Acutal Flight Date))]' name-style='unqualified' user:auto-column='sheet_link' user:ui-vit-column='true'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[yr:Acutal Flight Date:ok]' />
+        </groupfilter>
+      </group>
+      <layout dim-ordering='alphabetic' dim-percentage='0.153659' group-percentage='0.0560976' measure-ordering='alphabetic' measure-percentage='0.734146' parameter-percentage='0.0560976' show-hidden-fields='true' show-structure='true' user-set-layout='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:Forecast Indicator:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;Actual&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Estimate&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[:Measure Names]&#10;[none:Forecast Indicator:nk]' type='palette'>
+            <map-pri to='multiordinal_blue_10_0'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:ctd:Acutal Flight Date (copy)_853995120870092802:qk]&quot;</bucket>
+            </map-pri>
+            <map-pri to='multiordinal_green_10_0'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1]&quot;</bucket>
+            </map-pri>
+            <map-pri to='multiordinal_orange_10_0'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[ctd:Scheduled Flight Date:qk]&quot;</bucket>
+            </map-pri>
+          </encoding>
+          <encoding attr='color' field='[yr:Acutal Flight Date:ok]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>1981</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>1982</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>1983</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>1984</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>1985</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>1986</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[yr:Scheduled Flight Date:ok]' type='palette'>
+            <map to='#f28e2b'>
+              <bucket>1981</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>1982</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>1983</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>1984</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>1985</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>1986</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Calculation_853995121675542558:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Calculation_853995121962115105:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Delay Time (In Days):qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:usr:Calculation_853995121052520458:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[sum:Calculation_853995121675542558:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[sum:Calculation_853995121962115105:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[sum:Calculation_853995121964572706:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[sum:Delay Time (In Days):qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[sum:Number of Records:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[sum:Time on Launch Pad (In Days):qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[usr:Calculation_853995121056149520:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[usr:Calculation_853995121664430107:qk]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:usr:Calculation_853995121056423953:qk]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[sum:Calculation_647955436620795905:qk]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[usr:Calculation_853995121055002635:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:usr:Calculation_853995121056149520:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[sum:Calculation_647955436620931075:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[usr:Calculation_853995121052520458:qk]&quot;</bucket>
+            </map>
+            <map to='#9c755f'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:usr:Calculation_853995121045016582:qk]&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Total Number of Delays:qk]&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[sum:Total Number of Delays:qk]&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:usr:Calculation_853995121051316231:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Calculation_853995121700880416:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:usr:Calculation_853995121055244300:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[sum:Calculation_647955436620984324:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[sum:Calculation_853995121700880416:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[usr:Calculation_853995121055244300:qk]&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[sum:Calculation_647955436620857346:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Calculation_853995121078984726:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Calculation_853995121675190301:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:usr:Calculation_853995121055002635:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[sum:Calculation_853995121078984726:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[sum:Calculation_853995121675190301:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[usr:Calculation_853995121056423953:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[usr:Calculation_853995121664675868:qk]&quot;</bucket>
+            </map>
+            <map to='#ff9da7'>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:sum:Calculation_853995121029726212:qk]&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <default-sorts>
+        <manual-sort column='[none:Forecast Indicator:nk]' direction='ASC'>
+          <dictionary>
+            <bucket>&quot;Actual&quot;</bucket>
+            <bucket>&quot;Estimate&quot;</bucket>
+          </dictionary>
+        </manual-sort>
+      </default-sorts>
+    </datasource>
+  </datasources>
+  <shared-views>
+    <shared-view name='federated.1u235pz0j29m1k1f6nyw51we0as1'>
+      <datasources>
+        <datasource caption='Challenger Data Set (Data 605 - Hollingsworth Assignment 10)' name='federated.1u235pz0j29m1k1f6nyw51we0as1' />
+      </datasources>
+      <datasource-dependencies datasource='federated.1u235pz0j29m1k1f6nyw51we0as1'>
+        <column datatype='date' name='[Acutal Flight Date]' role='dimension' type='ordinal' />
+        <column datatype='string' name='[Shuttle]' role='dimension' type='nominal' />
+        <column-instance column='[Shuttle]' derivation='None' name='[none:Shuttle:nk]' pivot='key' type='nominal' />
+        <column-instance column='[Acutal Flight Date]' derivation='Year-Trunc' name='[tyr:Acutal Flight Date:qk]' pivot='key' type='quantitative' />
+      </datasource-dependencies>
+      <filter class='categorical' column='[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Shuttle:nk]'>
+        <groupfilter function='level-members' level='[none:Shuttle:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+      </filter>
+      <filter class='quantitative' column='[federated.1u235pz0j29m1k1f6nyw51we0as1].[tyr:Acutal Flight Date:qk]' included-values='in-range-or-null'>
+        <min>#1981-01-01 00:00:00#</min>
+        <max>#1986-01-01 00:00:00#</max>
+      </filter>
+    </shared-view>
+  </shared-views>
+  <worksheets>
+    <worksheet name='Average Cargo Load per Year'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontsize='11'>Increase in Privatized/Classified Cargo Loads</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Challenger Data Set (Data 605 - Hollingsworth Assignment 10)' name='federated.1u235pz0j29m1k1f6nyw51we0as1' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1u235pz0j29m1k1f6nyw51we0as1'>
+            <column datatype='date' name='[Acutal Flight Date]' role='dimension' type='ordinal' />
+            <column datatype='integer' name='[Cargo Total (In Pounts)]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Shuttle]' role='dimension' type='nominal' />
+            <column-instance column='[Shuttle]' derivation='Attribute' name='[attr:Shuttle:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Cargo Total (In Pounts)]' derivation='Avg' name='[avg:Cargo Total (In Pounts):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Shuttle]' derivation='None' name='[none:Shuttle:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Acutal Flight Date]' derivation='Day-Trunc' name='[tdy:Acutal Flight Date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Acutal Flight Date]' derivation='Year-Trunc' name='[tyr:Acutal Flight Date:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Cargo Total (In Pounts):qk]' included-values='non-null' />
+          <slices>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Shuttle:nk]</column>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Cargo Total (In Pounts):qk]</column>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[tyr:Acutal Flight Date:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Cargo Total (In Pounts):qk]' scope='rows' value='Pounds' />
+            <format attr='title' class='0' field='[federated.1u235pz0j29m1k1f6nyw51we0as1].[tdy:Acutal Flight Date:qk]' scope='cols' value='' />
+          </style-rule>
+          <style-rule element='annotation'>
+            <format attr='fill-color' id='annotation_0' value='#00000000' />
+          </style-rule>
+          <style-rule element='quick-filter'>
+            <format attr='title' field='[federated.1u235pz0j29m1k1f6nyw51we0as1].[tyr:Acutal Flight Date:qk]' value='Year' />
+            <format attr='title' field='[federated.1u235pz0j29m1k1f6nyw51we0as1].[tdy:Acutal Flight Date:qk]' value='Year' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <tooltip column='[federated.1u235pz0j29m1k1f6nyw51we0as1].[attr:Shuttle:nk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#787878'>Year of Acutal Flight Date:&#9;</run>
+                <run bold='true'>&lt;[federated.1u235pz0j29m1k1f6nyw51we0as1].[tdy:Acutal Flight Date:qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Shuttle:&#9;</run>
+                <run bold='true'>&lt;[federated.1u235pz0j29m1k1f6nyw51we0as1].[attr:Shuttle:nk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Cargo Total (In Pounts):&#9;</run>
+                <run bold='true'>&lt;[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Cargo Total (In Pounts):qk]&gt;</run>
+              </formatted-text>
+            </customized-tooltip>
+          </pane>
+        </panes>
+        <rows>[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Cargo Total (In Pounts):qk]</rows>
+        <cols>[federated.1u235pz0j29m1k1f6nyw51we0as1].[tdy:Acutal Flight Date:qk]</cols>
+        <annotations>
+          <annotation class='area' id='0' text-pinx='0.5' text-piny='0.5' text-width-delta='-18'>
+            <formatted-text>
+              <run fontsize='8'>Two Cargo Loads for the Department of Defense are classified</run>
+            </formatted-text>
+            <top-left>
+              <visual-coordinate class='axis'>
+                <x-coord axis-value='#1981-07-19 00:01:31.187#'>
+                  <node-reference>
+                    <axis>[federated.1u235pz0j29m1k1f6nyw51we0as1].[tdy:Acutal Flight Date:qk]</axis>
+                  </node-reference>
+                </x-coord>
+                <y-coord axis-value='678291.37297297292'>
+                  <node-reference>
+                    <axis>[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Cargo Total (In Pounts):qk]</axis>
+                  </node-reference>
+                </y-coord>
+                <page-reference />
+              </visual-coordinate>
+            </top-left>
+            <bottom-right>
+              <visual-coordinate class='axis'>
+                <x-coord axis-value='#1985-02-09 18:01:19.789#'>
+                  <node-reference>
+                    <axis>[federated.1u235pz0j29m1k1f6nyw51we0as1].[tdy:Acutal Flight Date:qk]</axis>
+                  </node-reference>
+                </x-coord>
+                <y-coord axis-value='460269.14594594605'>
+                  <node-reference>
+                    <axis>[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Cargo Total (In Pounts):qk]</axis>
+                  </node-reference>
+                </y-coord>
+                <page-reference />
+              </visual-coordinate>
+            </bottom-right>
+            <text x='0.5' y='0.5' />
+          </annotation>
+        </annotations>
+      </table>
+      <simple-id uuid='{DF3E62AB-AA80-4977-9E49-08E3CFE664DF}' />
+    </worksheet>
+    <worksheet name='Average Time on Launch Pad'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontsize='11'>Average Time on Launch Pad</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Challenger Data Set (Data 605 - Hollingsworth Assignment 10)' name='federated.1u235pz0j29m1k1f6nyw51we0as1' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1u235pz0j29m1k1f6nyw51we0as1'>
+            <column datatype='date' name='[Acutal Flight Date]' role='dimension' type='ordinal' />
+            <column caption='Delay Calculation' datatype='integer' name='[Calculation_853995121078984726]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='[Acutal Flight Date]-[Scheduled Flight Date]' />
+            </column>
+            <column caption='Original Time on Launch Pad' datatype='integer' name='[Calculation_853995121962115105]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='[Scheduled Flight Date]-[Day Rolled Out to Launch Pad]' />
+            </column>
+            <column datatype='date' name='[Day Rolled Out to Launch Pad]' role='dimension' type='ordinal' />
+            <column datatype='date' name='[Scheduled Flight Date]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[Shuttle]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_853995121078984726]' derivation='Avg' name='[avg:Calculation_853995121078984726:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_853995121962115105]' derivation='Avg' name='[avg:Calculation_853995121962115105:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Shuttle]' derivation='None' name='[none:Shuttle:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Acutal Flight Date]' derivation='Year-Trunc' name='[tyr:Acutal Flight Date:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1u235pz0j29m1k1f6nyw51we0as1].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Calculation_853995121078984726:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Calculation_853995121962115105:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <manual-sort column='[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Shuttle:nk]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;Columbia&quot;</bucket>
+              <bucket>&quot;Challenger&quot;</bucket>
+              <bucket>&quot;Discovery&quot;</bucket>
+              <bucket>&quot;Atlantis&quot;</bucket>
+              <bucket>%all%</bucket>
+            </dictionary>
+          </manual-sort>
+          <slices>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[:Measure Names]</column>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Shuttle:nk]</column>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[tyr:Acutal Flight Date:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.1u235pz0j29m1k1f6nyw51we0as1].[Multiple Values]' scope='cols' value='Days' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='rows' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='9' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.1u235pz0j29m1k1f6nyw51we0as1].[:Measure Names]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Shuttle:nk]</rows>
+        <cols>[federated.1u235pz0j29m1k1f6nyw51we0as1].[Multiple Values]</cols>
+      </table>
+      <simple-id uuid='{DD8E3545-A7F3-4ABC-A831-D331D4341606}' />
+    </worksheet>
+    <worksheet name='Average Turnaround Time (In Days)'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontsize='11'>Average Turnaround Time (In Days)</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Challenger Data Set (Data 605 - Hollingsworth Assignment 10)' name='federated.1u235pz0j29m1k1f6nyw51we0as1' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Maximum Turnaround Time' datatype='real' name='[Parameter 2]' param-domain-type='any' role='measure' type='quantitative' value='45.5'>
+              <calculation class='tableau' formula='45.5' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.1u235pz0j29m1k1f6nyw51we0as1'>
+            <column datatype='date' name='[Acutal Flight Date]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[Shuttle]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[Turnaround Time (In Days)]' role='measure' type='quantitative' />
+            <column-instance column='[Turnaround Time (In Days)]' derivation='Avg' name='[avg:Turnaround Time (In Days):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Shuttle]' derivation='None' name='[none:Shuttle:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Acutal Flight Date]' derivation='Year-Trunc' name='[tyr:Acutal Flight Date:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Shuttle:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Turnaround Time (In Days):qk]' shelf='rows' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Shuttle:nk]</column>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[tyr:Acutal Flight Date:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Turnaround Time (In Days):qk]' scope='cols' value='' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='rows' value='false' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='fill-above' id='refline1' value='#00000000' />
+            <format attr='fill-below' id='refline1' value='#00000000' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <reference-line axis-column='[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Turnaround Time (In Days):qk]' enable-instant-analytics='true' formula='average' id='refline1' label-type='automatic' probability='95' scope='per-table' value-column='[Parameters].[Parameter 2]' z-order='1' />
+          </pane>
+        </panes>
+        <rows>[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Shuttle:nk]</rows>
+        <cols>[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Turnaround Time (In Days):qk]</cols>
+      </table>
+      <simple-id uuid='{A229E8F0-5D39-4EBD-A3CD-459F13677358}' />
+    </worksheet>
+    <worksheet name='PSI (Field) vs Erosion Incidents'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontsize='11'>Pressure vs O-Ring Erosion Incidents</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Challenger Data Set (Data 605 - Hollingsworth Assignment 10)' name='federated.1u235pz0j29m1k1f6nyw51we0as1' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1u235pz0j29m1k1f6nyw51we0as1'>
+            <column datatype='date' name='[Acutal Flight Date]' role='dimension' type='ordinal' />
+            <column datatype='integer' name='[Erosion  and Blow-by Incidents]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[Pressure (PSI) Field]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Shuttle]' role='dimension' type='nominal' />
+            <column-instance column='[Erosion  and Blow-by Incidents]' derivation='Avg' name='[avg:Erosion  and Blow-by Incidents:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Pressure (PSI) Field]' derivation='Avg' name='[avg:Pressure (PSI) Field:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Acutal Flight Date]' derivation='MDY' name='[md:Acutal Flight Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Shuttle]' derivation='None' name='[none:Shuttle:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Erosion  and Blow-by Incidents]' derivation='Sum' name='[sum:Erosion  and Blow-by Incidents:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Acutal Flight Date]' derivation='Year-Trunc' name='[tyr:Acutal Flight Date:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Pressure (PSI) Field:qk]' included-values='in-range' />
+          <filter class='quantitative' column='[federated.1u235pz0j29m1k1f6nyw51we0as1].[sum:Erosion  and Blow-by Incidents:qk]' included-values='non-null' />
+          <slices>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[sum:Erosion  and Blow-by Incidents:qk]</column>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Pressure (PSI) Field:qk]</column>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Shuttle:nk]</column>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[tyr:Acutal Flight Date:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Erosion  and Blow-by Incidents:qk]' scope='rows' value='Incidents' />
+            <format attr='title' class='0' field='[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Pressure (PSI) Field:qk]' scope='cols' value='Pressure (Field)' />
+            <format attr='width' field='[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Erosion  and Blow-by Incidents:qk]' value='32' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <lod column='[federated.1u235pz0j29m1k1f6nyw51we0as1].[md:Acutal Flight Date:ok]' />
+              <lod column='[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Shuttle:nk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#787878'>Flight Date: </run>
+                <run bold='true'>&lt;[federated.1u235pz0j29m1k1f6nyw51we0as1].[md:Acutal Flight Date:ok]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Shuttle: </run>
+                <run bold='true'>&lt;[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Shuttle:nk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Erosion/Blow By Incidents: </run>
+                <run bold='true'>&lt;[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Erosion  and Blow-by Incidents:qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Pressure (PSI) Field:&#9;</run>
+                <run bold='true'>&lt;[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Pressure (PSI) Field:qk]&gt;</run>
+              </formatted-text>
+            </customized-tooltip>
+          </pane>
+        </panes>
+        <rows>[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Erosion  and Blow-by Incidents:qk]</rows>
+        <cols>[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Pressure (PSI) Field:qk]</cols>
+      </table>
+      <simple-id uuid='{8EF0FC41-8A53-4766-BDFB-DDB18A80EAE7}' />
+    </worksheet>
+    <worksheet name='Scheduled Launches by Year'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontsize='11'>Launches by Year</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Challenger Data Set (Data 605 - Hollingsworth Assignment 10)' name='federated.1u235pz0j29m1k1f6nyw51we0as1' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1u235pz0j29m1k1f6nyw51we0as1'>
+            <column caption='Acutal Flight Date String' datatype='string' datatype-customized='true' name='[Acutal Flight Date (copy)_853995120870092802]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='STR([Acutal Flight Date])' />
+            </column>
+            <column datatype='date' name='[Acutal Flight Date]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[Shuttle]' role='dimension' type='nominal' />
+            <column-instance column='[Acutal Flight Date (copy)_853995120870092802]' derivation='CountD' name='[ctd:Acutal Flight Date (copy)_853995120870092802:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Acutal Flight Date (copy)_853995120870092802]' derivation='CountD' forecast-column-base='[ctd:Acutal Flight Date (copy)_853995120870092802:qk]' forecast-column-type='forecast-value' name='[fVal:ctd:Acutal Flight Date (copy)_853995120870092802:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Shuttle]' derivation='None' name='[none:Shuttle:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Acutal Flight Date]' derivation='Year-Trunc' name='[tyr:Acutal Flight Date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Acutal Flight Date]' derivation='Year' name='[yr:Acutal Flight Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <slices>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Shuttle:nk]</column>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[tyr:Acutal Flight Date:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.1u235pz0j29m1k1f6nyw51we0as1].[ctd:Acutal Flight Date (copy)_853995120870092802:qk]' scope='rows' value='' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-orientation' field='[federated.1u235pz0j29m1k1f6nyw51we0as1].[yr:Acutal Flight Date:ok]' value='0' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='annotation'>
+            <format attr='fill-color' id='annotation_2' value='#00000000' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#787878'>Year of Acutal Flight Date:&#9;</run>
+                <run bold='true'>&lt;[federated.1u235pz0j29m1k1f6nyw51we0as1].[yr:Acutal Flight Date:ok]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Forecast:     </run>
+                <run fontcolor='#787878'>:&#9;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Total Flights:&#9;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>&lt;Sheet name=&quot;Shuttle List&quot; maxwidth=&quot;300&quot; maxheight=&quot;300&quot; filter=&quot;&lt;All Fields&gt;&quot;&gt;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1u235pz0j29m1k1f6nyw51we0as1].[ctd:Acutal Flight Date (copy)_853995120870092802:qk]</rows>
+        <cols>[federated.1u235pz0j29m1k1f6nyw51we0as1].[yr:Acutal Flight Date:ok]</cols>
+        <annotations>
+          <annotation class='area' id='1' text-pinx='0.5' text-piny='0.5' text-width-delta='-18'>
+            <formatted-text>
+              <run fontsize='8'>NASA proposed 15 launche for 1986</run>
+            </formatted-text>
+            <top-left>
+              <visual-coordinate class='axis'>
+                <x-coord cell-offset='0.524272'>
+                  <node-reference>
+                    <fields>
+                      <field>[federated.1u235pz0j29m1k1f6nyw51we0as1].[yr:Acutal Flight Date:ok]</field>
+                    </fields>
+                    <multibucket>
+                      <bucket>1981</bucket>
+                    </multibucket>
+                  </node-reference>
+                </x-coord>
+                <y-coord axis-value='10.620689655172415'>
+                  <node-reference>
+                    <axis>[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:ctd:Acutal Flight Date (copy)_853995120870092802:qk]</axis>
+                  </node-reference>
+                </y-coord>
+                <page-reference />
+              </visual-coordinate>
+            </top-left>
+            <bottom-right>
+              <visual-coordinate class='axis'>
+                <x-coord cell-offset='0.126214'>
+                  <node-reference>
+                    <fields>
+                      <field>[federated.1u235pz0j29m1k1f6nyw51we0as1].[yr:Acutal Flight Date:ok]</field>
+                    </fields>
+                    <multibucket>
+                      <bucket>1986</bucket>
+                    </multibucket>
+                  </node-reference>
+                </x-coord>
+                <y-coord axis-value='9.5172413793103452'>
+                  <node-reference>
+                    <axis>[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:ctd:Acutal Flight Date (copy)_853995120870092802:qk]</axis>
+                  </node-reference>
+                </y-coord>
+                <page-reference />
+              </visual-coordinate>
+            </bottom-right>
+            <text x='0.5' y='0.5' />
+          </annotation>
+          <annotation class='area' id='2' text-pinx='0.5' text-piny='0.5' text-width-delta='-18'>
+            <formatted-text>
+              <run fontsize='8'>NASA scheduled 10 launches in 1984</run>
+              <run>Æ&#10;</run>
+              <run fontsize='8'>NASA scheduled 15 launches for 1986</run>
+            </formatted-text>
+            <top-left>
+              <visual-coordinate class='axis'>
+                <x-coord cell-offset='0'>
+                  <node-reference>
+                    <fields>
+                      <field>[federated.1u235pz0j29m1k1f6nyw51we0as1].[yr:Acutal Flight Date:ok]</field>
+                    </fields>
+                    <multibucket>
+                      <bucket>1981</bucket>
+                    </multibucket>
+                  </node-reference>
+                </x-coord>
+                <y-coord axis-value='8.9308176100628938'>
+                  <node-reference>
+                    <axis>[federated.1u235pz0j29m1k1f6nyw51we0as1].[ctd:Acutal Flight Date (copy)_853995120870092802:qk]</axis>
+                  </node-reference>
+                </y-coord>
+                <page-reference />
+              </visual-coordinate>
+            </top-left>
+            <bottom-right>
+              <visual-coordinate class='axis'>
+                <x-coord cell-offset='0.15534'>
+                  <node-reference>
+                    <fields>
+                      <field>[federated.1u235pz0j29m1k1f6nyw51we0as1].[yr:Acutal Flight Date:ok]</field>
+                    </fields>
+                    <multibucket>
+                      <bucket>1985</bucket>
+                    </multibucket>
+                  </node-reference>
+                </x-coord>
+                <y-coord axis-value='7.6100628930817615'>
+                  <node-reference>
+                    <axis>[federated.1u235pz0j29m1k1f6nyw51we0as1].[ctd:Acutal Flight Date (copy)_853995120870092802:qk]</axis>
+                  </node-reference>
+                </y-coord>
+                <page-reference />
+              </visual-coordinate>
+            </bottom-right>
+            <text x='0.5' y='0.5' />
+          </annotation>
+        </annotations>
+        <forecast-specification auto-forecast-agg='true' band-confidence-level='95.000000' enabled='false' fill-type='fill-missing' ignore-last='1' model-type='auto-season' range-periods='Year-Trunc' range-size='1' range-type='end-of' show-prediction-bands='true' />
+      </table>
+      <simple-id uuid='{42255968-A2A7-4138-A5A1-C056ED45806D}' />
+    </worksheet>
+    <worksheet name='Shuttle List'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Challenger Data Set (Data 605 - Hollingsworth Assignment 10)' name='federated.1u235pz0j29m1k1f6nyw51we0as1' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1u235pz0j29m1k1f6nyw51we0as1'>
+            <column datatype='date' name='[Acutal Flight Date]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[Shuttle]' role='dimension' type='nominal' />
+            <column-instance column='[Acutal Flight Date]' derivation='CountD' name='[ctd:Acutal Flight Date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Shuttle]' derivation='None' name='[none:Shuttle:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Acutal Flight Date]' derivation='Year-Trunc' name='[tyr:Acutal Flight Date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Acutal Flight Date]' derivation='Year' name='[yr:Acutal Flight Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1u235pz0j29m1k1f6nyw51we0as1].[Tooltip (YEAR(Acutal Flight Date))]'>
+            <groupfilter function='level-members' level='[yr:Acutal Flight Date:ok]' user:ui-action-filter='[Action - Shuttle List]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Shuttle:nk]</column>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[Tooltip (YEAR(Acutal Flight Date))]</column>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[tyr:Acutal Flight Date:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.1u235pz0j29m1k1f6nyw51we0as1].[ctd:Acutal Flight Date:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Shuttle:nk]</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{015EBECD-0DFE-4565-8ABC-63F9FC531AD2}' />
+    </worksheet>
+    <worksheet name='Temperature at Launch'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontsize='11'>Temperature at Launch</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Challenger Data Set (Data 605 - Hollingsworth Assignment 10)' name='federated.1u235pz0j29m1k1f6nyw51we0as1' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1u235pz0j29m1k1f6nyw51we0as1'>
+            <column datatype='date' name='[Acutal Flight Date]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[Flight Number]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Shuttle]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[Temperature (Value)]' role='measure' type='quantitative' />
+            <column-instance column='[Temperature (Value)]' derivation='Avg' name='[avg:Temperature (Value):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Flight Number]' derivation='None' name='[none:Flight Number:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Shuttle]' derivation='None' name='[none:Shuttle:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Acutal Flight Date]' derivation='Year-Trunc' name='[tyr:Acutal Flight Date:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <slices>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Shuttle:nk]</column>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[tyr:Acutal Flight Date:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Temperature (Value):qk]' field-type='quantitative' max='90.0' min='30.0' range-type='fixed' scope='cols' type='space' />
+            <format attr='title' class='0' field='[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Temperature (Value):qk]' scope='cols' value='Temperature' />
+          </style-rule>
+          <style-rule element='refboxplot'>
+            <format attr='palette' id='refline0' value='bp_blue' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <lod column='[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Flight Number:nk]' />
+              <lod column='[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Shuttle:nk]' />
+            </encodings>
+            <reference-line axis-column='[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Temperature (Value):qk]' boxplot-mark-exclusion='false' boxplot-whisker-type='standard' enable-instant-analytics='true' formula='average' id='refline0' label-type='automatic' probability='95' scope='per-cell' symmetric='false' value-column='[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Temperature (Value):qk]' z-order='1' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.73563534021377563' />
+                <format attr='mark-color' value='#4e79a7' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols>[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Temperature (Value):qk]</cols>
+        <annotations>
+          <annotation class='point' id='0' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run fontcolor='#787878'>Flight Number: </run>
+              <run bold='true'>&lt;[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Flight Number:nk]&gt;</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#787878'>Shuttle: &lt;[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Shuttle:nk]&gt;</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#787878'>Avg. Temperature (Value): </run>
+              <run bold='true'>&lt;[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Temperature (Value):qk]&gt;</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Temperature (Value):qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Temperature (Value):qk]</field>
+                      <field>[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Flight Number:nk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>31.0</value>
+                    <value>&quot;STS 51-L&quot;</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='130' y='-20' />
+          </annotation>
+        </annotations>
+      </table>
+      <simple-id uuid='{7B8A4F51-BC3F-4344-A8B8-B7A5B1C9921D}' />
+    </worksheet>
+    <worksheet name='Temperature vs Erosion Incidents'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontsize='11'>Temperature vs O-Ring Erosion Incidents</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Challenger Data Set (Data 605 - Hollingsworth Assignment 10)' name='federated.1u235pz0j29m1k1f6nyw51we0as1' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1u235pz0j29m1k1f6nyw51we0as1'>
+            <column datatype='date' name='[Acutal Flight Date]' role='dimension' type='ordinal' />
+            <column datatype='integer' name='[Erosion  and Blow-by Incidents]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Shuttle]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[Temperature (Value)]' role='measure' type='quantitative' />
+            <column-instance column='[Erosion  and Blow-by Incidents]' derivation='Avg' name='[avg:Erosion  and Blow-by Incidents:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Temperature (Value)]' derivation='Avg' name='[avg:Temperature (Value):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Acutal Flight Date]' derivation='MDY' name='[md:Acutal Flight Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Shuttle]' derivation='None' name='[none:Shuttle:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Erosion  and Blow-by Incidents]' derivation='Sum' name='[sum:Erosion  and Blow-by Incidents:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Acutal Flight Date]' derivation='Year-Trunc' name='[tyr:Acutal Flight Date:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[federated.1u235pz0j29m1k1f6nyw51we0as1].[sum:Erosion  and Blow-by Incidents:qk]' included-values='non-null' />
+          <slices>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[sum:Erosion  and Blow-by Incidents:qk]</column>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Shuttle:nk]</column>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[tyr:Acutal Flight Date:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Temperature (Value):qk]' scope='cols' value='Temperature' />
+            <format attr='title' class='0' field='[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Erosion  and Blow-by Incidents:qk]' scope='rows' value='Incidents' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <lod column='[federated.1u235pz0j29m1k1f6nyw51we0as1].[md:Acutal Flight Date:ok]' />
+              <lod column='[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Shuttle:nk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#787878'>Flight Date: </run>
+                <run bold='true'>&lt;[federated.1u235pz0j29m1k1f6nyw51we0as1].[md:Acutal Flight Date:ok]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Shuttle: </run>
+                <run bold='true'>&lt;[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Shuttle:nk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Erosion/Blow By Incidents: </run>
+                <run bold='true'>&lt;[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Erosion  and Blow-by Incidents:qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Temperature: </run>
+                <run bold='true'>&lt;[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Temperature (Value):qk]&gt;</run>
+              </formatted-text>
+            </customized-tooltip>
+          </pane>
+        </panes>
+        <rows>[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Erosion  and Blow-by Incidents:qk]</rows>
+        <cols>[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Temperature (Value):qk]</cols>
+        <annotations>
+          <annotation class='point' id='0' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run fontcolor='#787878'>Flight Date: </run>
+              <run bold='true'>&lt;[federated.1u235pz0j29m1k1f6nyw51we0as1].[md:Acutal Flight Date:ok]&gt;</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#787878'>Shuttle: </run>
+              <run bold='true'>&lt;[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Shuttle:nk]&gt; </run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#787878'>Erosion  and Blow-by Incidents: </run>
+              <run bold='true'>&lt;[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Erosion  and Blow-by Incidents:qk]&gt;</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#787878'>Temperature (Value): </run>
+              <run bold='true'>&lt;[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Temperature (Value):qk]&gt;</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Temperature (Value):qk]</field>
+                      </x-fields>
+                      <y-fields>
+                        <field>[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Erosion  and Blow-by Incidents:qk]</field>
+                      </y-fields>
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Erosion  and Blow-by Incidents:qk]</field>
+                      <field>[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Temperature (Value):qk]</field>
+                      <field>[federated.1u235pz0j29m1k1f6nyw51we0as1].[md:Acutal Flight Date:ok]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>6.0</value>
+                    <value>31.0</value>
+                    <value>19860128</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='130' y='-20' />
+          </annotation>
+        </annotations>
+      </table>
+      <simple-id uuid='{E8C4D16B-F3C5-4C3C-B38E-60F57F4F440C}' />
+    </worksheet>
+    <worksheet name='Total Delays By Category'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontsize='11'>Total Delays (1981 - 1986)</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Challenger Data Set (Data 605 - Hollingsworth Assignment 10)' name='federated.1u235pz0j29m1k1f6nyw51we0as1' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1u235pz0j29m1k1f6nyw51we0as1'>
+            <column datatype='date' name='[Acutal Flight Date]' role='dimension' type='ordinal' />
+            <column caption='Sum of Technical Delay' datatype='integer' name='[Calculation_853995121052520458]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM(IF CONTAINS([Delay Type], &quot;Technical&quot;) THEN 1 END )' />
+            </column>
+            <column caption='Sum of Weather Delay' datatype='integer' name='[Calculation_853995121055002635]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM(IF CONTAINS([Delay Type], &quot;Weather&quot;) THEN 1 END )' />
+            </column>
+            <column caption='Sum of Schedule Delay' datatype='integer' name='[Calculation_853995121055244300]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM(IF CONTAINS([Delay Type], &quot;Schedule&quot;) THEN 1 END )' />
+            </column>
+            <column caption='Sum of Orbiter Delay' datatype='integer' name='[Calculation_853995121056149520]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM(IF CONTAINS([Delay Type], &quot;Orbiter Processing&quot;) THEN 1 END )' />
+            </column>
+            <column caption='Sum of Remanifest Delay' datatype='integer' name='[Calculation_853995121056423953]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM(IF CONTAINS([Delay Type], &quot;Remanifest&quot;) THEN 1 END )' />
+            </column>
+            <column datatype='string' name='[Delay Type]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Shuttle]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_853995121052520458]' derivation='User' forecast-column-base='[usr:Calculation_853995121052520458:qk]' forecast-column-type='forecast-value' name='[fVal:usr:Calculation_853995121052520458:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_853995121055002635]' derivation='User' forecast-column-base='[usr:Calculation_853995121055002635:qk]' forecast-column-type='forecast-value' name='[fVal:usr:Calculation_853995121055002635:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_853995121055244300]' derivation='User' forecast-column-base='[usr:Calculation_853995121055244300:qk]' forecast-column-type='forecast-value' name='[fVal:usr:Calculation_853995121055244300:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_853995121056149520]' derivation='User' forecast-column-base='[usr:Calculation_853995121056149520:qk]' forecast-column-type='forecast-value' name='[fVal:usr:Calculation_853995121056149520:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_853995121056423953]' derivation='User' forecast-column-base='[usr:Calculation_853995121056423953:qk]' forecast-column-type='forecast-value' name='[fVal:usr:Calculation_853995121056423953:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Shuttle]' derivation='None' name='[none:Shuttle:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Acutal Flight Date]' derivation='Year-Trunc' name='[tyr:Acutal Flight Date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_853995121052520458]' derivation='User' name='[usr:Calculation_853995121052520458:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_853995121055002635]' derivation='User' name='[usr:Calculation_853995121055002635:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_853995121055244300]' derivation='User' name='[usr:Calculation_853995121055244300:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_853995121056149520]' derivation='User' name='[usr:Calculation_853995121056149520:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_853995121056423953]' derivation='User' name='[usr:Calculation_853995121056423953:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1u235pz0j29m1k1f6nyw51we0as1].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:usr:Calculation_853995121052520458:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:usr:Calculation_853995121055002635:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:usr:Calculation_853995121055244300:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:usr:Calculation_853995121056423953:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:usr:Calculation_853995121056149520:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <manual-sort column='[federated.1u235pz0j29m1k1f6nyw51we0as1].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:usr:Calculation_853995121052520458:qk]&quot;</bucket>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:usr:Calculation_853995121055002635:qk]&quot;</bucket>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:usr:Calculation_853995121055244300:qk]&quot;</bucket>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:usr:Calculation_853995121056423953:qk]&quot;</bucket>
+              <bucket>&quot;[federated.1u235pz0j29m1k1f6nyw51we0as1].[fVal:usr:Calculation_853995121056149520:qk]&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <slices>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[:Measure Names]</column>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Shuttle:nk]</column>
+            <column>[federated.1u235pz0j29m1k1f6nyw51we0as1].[tyr:Acutal Flight Date:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.1u235pz0j29m1k1f6nyw51we0as1].[Multiple Values]' scope='cols' value='' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='show-null-value-warning' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#787878'>&lt;[federated.1u235pz0j29m1k1f6nyw51we0as1].[:Measure Names]&gt;:&#9;</run>
+                <run bold='true'>&lt;[federated.1u235pz0j29m1k1f6nyw51we0as1].[Multiple Values]&gt;</run>
+              </formatted-text>
+            </customized-tooltip>
+          </pane>
+        </panes>
+        <rows>[federated.1u235pz0j29m1k1f6nyw51we0as1].[:Measure Names]</rows>
+        <cols>[federated.1u235pz0j29m1k1f6nyw51we0as1].[Multiple Values]</cols>
+        <forecast-specification auto-forecast-agg='true' band-confidence-level='95.000000' enabled='true' fill-type='fill-missing' ignore-last='1' model-type='auto-season' range-periods='Year-Trunc' range-size='2' range-type='end-of' show-prediction-bands='false' />
+      </table>
+      <simple-id uuid='{F391D791-C258-418E-AD37-5B55C06C2173}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Challenger Dashboard'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontalignment='1' fontsize='14'>The Space Shuttle Challenger Disaster: When Science and Bureaucracy Collide</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <style />
+      <size maxheight='700' maxwidth='1150' minheight='700' minwidth='1150' preset-index='12' sizing-mode='fixed' />
+      <datasources>
+        <datasource caption='Challenger Data Set (Data 605 - Hollingsworth Assignment 10)' name='federated.1u235pz0j29m1k1f6nyw51we0as1' />
+      </datasources>
+      <datasource-dependencies datasource='federated.1u235pz0j29m1k1f6nyw51we0as1'>
+        <column datatype='date' name='[Acutal Flight Date]' role='dimension' type='ordinal' />
+        <column datatype='string' name='[Shuttle]' role='dimension' type='nominal' />
+        <column-instance column='[Shuttle]' derivation='None' name='[none:Shuttle:nk]' pivot='key' type='nominal' />
+        <column-instance column='[Acutal Flight Date]' derivation='Year-Trunc' name='[tyr:Acutal Flight Date:qk]' pivot='key' type='quantitative' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='4' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='97714' id='26' param='horz' type='layout-flow' w='87217' x='696' y='1143'>
+            <zone h='97714' id='22' param='horz' type='layout-flow' w='87217' x='696' y='1143'>
+              <zone h='97714' id='20' type='layout-basic' w='87217' x='696' y='1143'>
+                <zone h='36428' id='8' param='vert' type='layout-flow' w='87217' x='696' y='1143'>
+                  <zone h='5000' id='10' type='title' w='87217' x='696' y='1143'>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                  <zone h='31428' id='6' type='layout-basic' w='87217' x='696' y='6143'>
+                    <zone h='31428' id='3' param='horz' type='layout-flow' w='87217' x='696' y='6143'>
+                      <zone h='31428' id='9' type='layout-basic' w='87217' x='696' y='6143'>
+                        <zone h='31428' id='11' name='Temperature vs Erosion Incidents' w='27975' x='30750' y='6143'>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                          </zone-style>
+                        </zone>
+                        <zone h='31428' id='12' name='PSI (Field) vs Erosion Incidents' w='29188' x='58725' y='6143'>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                          </zone-style>
+                        </zone>
+                        <zone h='31428' id='15' name='Temperature at Launch' w='30054' x='696' y='6143'>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                          </zone-style>
+                        </zone>
+                      </zone>
+                    </zone>
+                  </zone>
+                </zone>
+                <zone h='29286' id='14' param='horz' type='layout-flow' w='87217' x='696' y='69571'>
+                  <zone fixed-size='535' h='29286' id='16' is-fixed='true' name='Average Time on Launch Pad' w='47218' x='696' y='69571'>
+                    <layout-cache minwidth='180' type-h='fixed' type-w='scalable' />
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                  <zone h='29286' id='29' name='Average Cargo Load per Year' w='39999' x='47914' y='69571'>
+                    <layout-cache minwidth='174' type-h='fixed' type-w='scalable' />
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                </zone>
+                <zone h='32000' id='27' type='layout-basic' w='87217' x='696' y='37571'>
+                  <zone h='32000' id='18' param='horz' type='layout-flow' w='30054' x='696' y='37571'>
+                    <zone h='32000' id='19' name='Scheduled Launches by Year' w='30054' x='696' y='37571'>
+                      <layout-cache cell-count-w='6' minheight='157' non-cell-size-w='30' type-h='scalable' type-w='cell' />
+                      <zone-style>
+                        <format attr='border-color' value='#000000' />
+                        <format attr='border-style' value='none' />
+                        <format attr='border-width' value='0' />
+                        <format attr='margin' value='4' />
+                      </zone-style>
+                    </zone>
+                  </zone>
+                  <zone h='32000' id='28' param='horz' type='layout-flow' w='57163' x='30750' y='37571'>
+                    <zone h='32000' id='24' name='Average Turnaround Time (In Days)' w='27858' x='30750' y='37571'>
+                      <layout-cache minwidth='180' type-h='fixed' type-w='scalable' />
+                      <zone-style>
+                        <format attr='border-color' value='#000000' />
+                        <format attr='border-style' value='none' />
+                        <format attr='border-width' value='0' />
+                        <format attr='margin' value='4' />
+                      </zone-style>
+                    </zone>
+                    <zone fixed-size='329' h='32000' id='23' is-fixed='true' name='Total Delays By Category' w='29305' x='58608' y='37571'>
+                      <layout-cache minwidth='180' type-h='fixed' type-w='scalable' />
+                      <zone-style>
+                        <format attr='border-color' value='#000000' />
+                        <format attr='border-style' value='none' />
+                        <format attr='border-width' value='0' />
+                        <format attr='margin' value='4' />
+                      </zone-style>
+                    </zone>
+                  </zone>
+                </zone>
+              </zone>
+            </zone>
+          </zone>
+          <zone h='97714' id='30' param='vert' type='layout-flow' w='11391' x='87913' y='1143'>
+            <zone h='7429' id='31' mode='checkdropdown' name='Temperature vs Erosion Incidents' param='[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Shuttle:nk]' type='filter' values='database' w='11391' x='87913' y='1143'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='9857' id='32' name='Average Cargo Load per Year' param='[federated.1u235pz0j29m1k1f6nyw51we0as1].[tyr:Acutal Flight Date:qk]' type='filter' values='relevant' w='11391' x='87913' y='8572'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='9429' id='17' name='Average Time on Launch Pad' pane-specification-id='9' param='[federated.1u235pz0j29m1k1f6nyw51we0as1].[:Measure Names]' type='color' w='11391' x='87913' y='18429'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <layout-options>
+            <title>
+              <formatted-text>
+                <run fontalignment='1' fontsize='14'>The Space Shuttle Challenger Disaster: When Science and Bureaucracy Collide</run>
+              </formatted-text>
+            </title>
+          </layout-options>
+          <size maxheight='2050' minheight='2050' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='56' type='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97714' id='55' param='vert' type='layout-flow' w='98608' x='696' y='1143'>
+                <zone h='5000' id='10' type='title' w='87217' x='696' y='1143'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='212' h='31428' id='15' is-fixed='true' name='Temperature at Launch' w='30054' x='696' y='6143'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='7429' id='31' mode='checkdropdown' name='Temperature vs Erosion Incidents' param='[federated.1u235pz0j29m1k1f6nyw51we0as1].[none:Shuttle:nk]' type='filter' values='database' w='11391' x='87913' y='1143'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='212' h='31428' id='11' is-fixed='true' name='Temperature vs Erosion Incidents' w='27975' x='30750' y='6143'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='212' h='31428' id='12' is-fixed='true' name='PSI (Field) vs Erosion Incidents' w='29188' x='58725' y='6143'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='216' h='32000' id='19' is-fixed='true' name='Scheduled Launches by Year' w='30054' x='696' y='37571'>
+                  <layout-cache cell-count-w='6' minheight='157' non-cell-size-w='30' type-h='scalable' type-w='cell' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='216' h='32000' id='24' is-fixed='true' name='Average Turnaround Time (In Days)' w='27858' x='30750' y='37571'>
+                  <layout-cache minwidth='180' type-h='fixed' type-w='scalable' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='216' h='32000' id='23' is-fixed='true' name='Total Delays By Category' w='29305' x='58608' y='37571'>
+                  <layout-cache minwidth='180' type-h='fixed' type-w='scalable' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='197' h='29286' id='16' is-fixed='true' name='Average Time on Launch Pad' w='47218' x='696' y='69571'>
+                  <layout-cache minwidth='180' type-h='fixed' type-w='scalable' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='9429' id='17' name='Average Time on Launch Pad' pane-specification-id='9' param='[federated.1u235pz0j29m1k1f6nyw51we0as1].[:Measure Names]' type='color' w='11391' x='87913' y='18429'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='9857' id='32' name='Average Cargo Load per Year' param='[federated.1u235pz0j29m1k1f6nyw51we0as1].[tyr:Acutal Flight Date:qk]' type='filter' values='relevant' w='11391' x='87913' y='8572'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='197' h='29286' id='29' is-fixed='true' name='Average Cargo Load per Year' w='39999' x='47914' y='69571'>
+                  <layout-cache minwidth='174' type-h='fixed' type-w='scalable' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{93D623AA-75D2-4438-8898-1C77D7BD9199}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='48'>
+    <window class='dashboard' name='Challenger Dashboard'>
+      <viewpoints>
+        <viewpoint name='Average Cargo Load per Year'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Average Time on Launch Pad'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Average Turnaround Time (In Days)'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='PSI (Field) vs Erosion Incidents'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Scheduled Launches by Year'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Temperature at Launch'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Temperature vs Erosion Incidents'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Total Delays By Category'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='10' />
+      <simple-id uuid='{186253F0-7186-45AE-9C83-8B7BBC0E2301}' />
+    </window>
+    <window class='worksheet' name='Temperature vs Erosion Incidents'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{002B3D00-5917-4FC0-8BDE-089547403FE8}' />
+    </window>
+    <window class='worksheet' maximized='true' name='PSI (Field) vs Erosion Incidents'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.1u235pz0j29m1k1f6nyw51we0as1].[avg:Pressure (PSI) Field:qk]' show-domain='false' show-null-ctrls='false' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{47767EE1-FA92-43A5-BA7B-FF4FACE98E08}' />
+    </window>
+    <window class='worksheet' name='Temperature at Launch'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{9D6DFCF5-A74A-4F19-B152-6624808E3330}' />
+    </window>
+    <window class='worksheet' name='Scheduled Launches by Year'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <floating-toolbar-visibility value='1' />
+      </viewpoint>
+      <simple-id uuid='{89722C0F-5A79-429C-BC2E-9D1CA0F780D4}' />
+    </window>
+    <window class='worksheet' name='Average Turnaround Time (In Days)'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='type_in' param='[Parameters].[Parameter 1]' type='parameter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{504230CA-A4EC-4E68-9460-B066E183CFBF}' />
+    </window>
+    <window class='worksheet' name='Total Delays By Category'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{B7078BB9-D07C-45E7-9776-D9EABC6DCC2D}' />
+    </window>
+    <window class='worksheet' name='Average Time on Launch Pad'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='9' param='[federated.1u235pz0j29m1k1f6nyw51we0as1].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{06EE4526-41D9-4BFB-BCF9-2927A316DDB1}' />
+    </window>
+    <window class='worksheet' name='Average Cargo Load per Year'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{356DCC63-05E7-4EA8-8719-22FD83EAA383}' />
+    </window>
+    <window class='worksheet' name='Shuttle List'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{EDE31615-5A2D-411E-82B3-724721868F17}' />
+    </window>
+  </windows>
+</workbook>

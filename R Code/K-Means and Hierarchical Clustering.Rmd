@@ -1,0 +1,196 @@
+---
+title: "K-Means and Hierarchical Clustering"
+output:
+  word_document: default
+  html_document: default
+date: '2023-06-22'
+---
+
+
+Part 1:  KMeans Clustering  
+
+Perform K-means clustering manually, with K = 2, on a small example with n = 6 observations and p = 2 features. The observations are as follows.  
+
+  
+  
+|Obs. | $X1$ | $X2$ |
+|:---:|:----:|:----:|
+|  1  |   1  |   4  |
+|  2  |   1  |   3  |
+|  3  |   0  |   4  |
+|  4  |   5  |   1  |
+|  5  |   6  |   2  |
+|  6  |   4  |   0  |  
+  
+  
+    a) Plot the observations.  
+  
+  
+```{r}
+x <- matrix(c(1, 1, 0, 5, 6, 4, 4, 3, 3, 1, 2, 0), ncol=2)
+print(x)
+
+plot(x, type="p", col="blue")
+
+```
+   
+   
+  
+    b) Randomly assign a cluster label to each observation. You can use the sample() command in R to do this. Report the cluster labels for each observation.  
+
+```{r}
+set.seed(3)
+sample(c(1,2), size=nrow(x), replace=TRUE)
+
+```
+  
+  
+|Obs. | $X1$ | $X2$ |Cluster|
+|:---:|:----:|:----:|:-----:|
+|  1  |   1  |   4  |    1  |
+|  2  |   1  |   3  |    2  |
+|  3  |   0  |   4  |    2  |
+|  4  |   5  |   1  |    1  |
+|  5  |   6  |   2  |    2  |
+|  6  |   4  |   0  |    2  | 
+  
+
+   
+   
+    c) Compute the centroid for each cluster.  
+    
+  
+|cluster |     $X1$ Centroid     |     $X2$ Centroid    |
+|:------:|:---------------------:|:--------------------:|
+|    1   |     $(1+5)/2 = 3$     |   $(4+1)/2 = 2.5$    |
+|    2   | $(1+0+6+4)/4 =  2.75$ | $(3+4+2+0)/4 = 2.25$ |
+  
+  
+  
+  
+    d) Assign each observation to the centroid to which it is closest, in terms of Euclidean distance. Report the cluster labels for each observation.  
+    
+  
+|Obs. |     Cluster 1 Euclidean Dist.      |      Cluster 2 Euclidean Dist.         |
+|:---:|:----------------------------------:|:--------------------------------------:|
+|  1  | $\sqrt{(1-3)^2 + (4-2.5)^2} = 2.5$ |$\sqrt{(1-2.75)^2 + (4-2.25)^2} = 2.475$|
+|  2  |$\sqrt{(1-3)^2 + (3-2.5)^2} = 2.062$|$\sqrt{(1-2.75)^2 + (3-2.25)^2} = 1.904$|
+|  3  |$\sqrt{(0-3)^2 + (4-2.5)^2} = 3.354$|$\sqrt{(0-2.75)^2 + (4-2.25)^2} = 3.260$|
+|  4  | $\sqrt{(5-3)^2 + (1-2.5)^2} = 2.5$ |$\sqrt{(5-2.75)^2 + (1-2.25)^2} = 2.574$|
+|  5  |$\sqrt{(6-3)^2 + (2-2.5)^2} = 3.041$|$\sqrt{(6-2.75)^2 + (2-2.25)^2} = 3.260$|
+|  6  |$\sqrt{(4-3)^2 + (0-2.5)^2} = 2.693$|$\sqrt{(4-2.75)^2 + (0-2.25)^2} = 2.574$|
+  
+  
+|Obs. |  $X1$ |  $X2$ |Cluster|
+|:---:|:-----:|:-----:|:-----:|
+|  1  |   1   |   4   |    2  |
+|  2  |   1   |   3   |    2  |
+|  3  |   0   |   4   |    2  |
+|  4  |   5   |   1   |    1  |
+|  5  |   6   |   2   |    1  |
+|  6  |   4   |   0   |    2  | 
+    
+    e) Repeat (c) and (d) until the answers obtained stop changing.  
+  
+|cluster |   $X1$ Centroid   |    $X2$ Centroid   |
+|:------:|:-----------------:|:------------------:|
+|    1   |  $(5+6)/2 = 5.5$  |   $(1+2)/2 = 1.5$  |
+|    2   |$(1+1+0+4)/4 = 1.5$|$(4+3+4+0)/4 = 2.75$|
+  
+|Obs. |         Cluster 1 Eucl. Dist         |        Cluster 2 Eucl. Dist           |
+|:---:|:------------------------------------:|:-------------------------------------:|
+|  1  |$\sqrt{(1-5.5)^2 + (4-1.5)^2} = 5.148$|$\sqrt{(1-1.5)^2 + (4-2.75)^2} = 1.346$|
+|  2  |$\sqrt{(1-5.5)^2 + (3-1.5)^2} = 4.743$|$\sqrt{(1-1.5)^2 + (3-2.75)^2} = 0.559$|
+|  3  |$\sqrt{(0-5.5)^2 + (4-1.5)^2} = 6.042$|$\sqrt{(0-1.5)^2 + (4-2.75)^2} = 1.953$|
+|  4  |$\sqrt{(5-5.5)^2 + (1-1.5)^2} = 0.707$|$\sqrt{(5-1.5)^2 + (1-2.75)^2} = 3.913$|
+|  5  |$\sqrt{(6-5.5)^2 + (2-1.5)^2} = 0.707$|$\sqrt{(6-1.5)^2 + (2-2.75)^2} = 4.562$|
+|  6  |$\sqrt{(4-5.5)^2 + (0-1.5)^2} = 2.121$|$\sqrt{(4-1.5)^2 + (0-2.75)^2} = 3.717$|
+  
+  
+|Obs. | $X1$ | $X2$ |Cluster|
+|:---:|:----:|:----:|:-----:|
+|  1  |   1  |   4  |    2  |
+|  2  |   1  |   3  |    2  |
+|  3  |   0  |   4  |    2  |
+|  4  |   5  |   1  |    1  |
+|  5  |   6  |   2  |    1  |
+|  6  |   4  |   0  |    1  |   
+
+  
+|cluster |  $X1$ Centroid  |   $X2$ Centroid   |
+|:------:|:---------------:|:-----------------:|
+|    1   | $(5+6+4)/3 = 5$ |  $(1+2+0)/3 = 1$  |
+|    2   |$(1+1+0)/2=0.667$|$(4+3+4)/3 = 3.667$|
+  
+|Obs. |     Cluster 1 Euclidean Dist.    |        Cluster 2 Euclidean Dist.         |
+|:---:|:--------------------------------:|:----------------------------------------:|
+|  1  |  $\sqrt{(1-5)^2 + (4-1)^2} = 5$  |$\sqrt{(1-0.667)^2 + (4-3.667)^2} = 0.471$|
+|  2  |$\sqrt{(1-5)^2 + (3-1)^2} = 4.472$|$\sqrt{(1-0.667)^2 + (3-3.667)^2} = 0.745$|
+|  3  |$\sqrt{(0-5)^2 + (4-1)^2} = 5.831$|$\sqrt{(0-0.667)^2 + (4-3.667)^2} = 0.745$|
+|  4  |  $\sqrt{(5-5)^2 + (1-1)^2} = 0$  |$\sqrt{(5-0.667)^2 + (1-3.667)^2} = 5.088$|
+|  5  |$\sqrt{(6-5)^2 + (2-1)^2} = 1.414$|$\sqrt{(6-0.667)^2 + (2-3.667)^2} = 5.588$|
+|  6  |$\sqrt{(4-5)^2 + (0-1)^2} = 1.414$|$\sqrt{(4-0.667)^2 + (0-3.667)^2} = 4.995$|
+  
+  
+|Obs. | $X1$ | $X2$ |Cluster|
+|:---:|:----:|:----:|:-----:|
+|  1  |   1  |   4  |    2  |
+|  2  |   1  |   3  |    2  |
+|  3  |   0  |   4  |    2  |
+|  4  |   5  |   1  |    1  |
+|  5  |   6  |   2  |    1  |
+|  6  |   4  |   0  |    1  |
+  
+    f) In your plot from (a), color the observations according to the cluster labels obtained.
+    
+
+```{r}
+x <- cbind(x, c(2, 2, 2, 1, 1, 1))
+colnames(x) <- c("X1", "X2", "Cluster")
+print(x)
+
+plot(x[, 1:2], bg=c(2, 2, 2, 1, 1, 1), col=c(2, 2, 2, 1, 1, 1))
+
+```
+
+
+Part 2:  Hierarchical Clustering  
+
+Perform Hierarchical Clustering in R
+
+```{r}
+set.seed(2)
+x = matrix(rnorm(50*2), ncol=2)
+x[1:25, 1] + 3
+x[1:25, 2] - 4
+
+hc.complete = hclust(dist(x), method = "complete")
+
+hc.average = hclust(dist(x), method = "average")
+
+hc.single = hclust(dist(x), method = "single")
+
+plot(hc.complete, main = "Complete Linkage", xlab = "", sub = "", cex.lab = .8, cex.axis = .8, cex.main = .8, cex.sub = .8)
+
+plot(hc.average, main = "Average Linkage", xlab = "", sub = "", cex.lab = .8, cex.axis = .8, cex.main = .8, cex.sub = .8)
+
+plot(hc.single, main = "Single Linkage", xlab = "", sub = "", cex = .8, cex.lab = .8, cex.main = .8)
+
+cutree(hc.complete, 2)
+
+cutree(hc.average, 2)
+
+cutree(hc.single, 2)
+
+cutree(hc.single, 4)
+
+xsc = scale(x)
+
+plot(hclust(dist(xsc), method = "complete"), main = "Hierarchical Clustering with Scaled Features", cex.main = .8)
+
+x = matrix(rnorm(50*3), ncol = 3)
+
+dd = as.dist(1 - cor(t(x)))
+
+plot(hclust(dd, method = "complete"), main = "Complete Linkage with Correlation-Based Distance", xlab = "", sub = "", cex.main = .8)
+```
