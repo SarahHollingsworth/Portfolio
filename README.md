@@ -1,4 +1,4 @@
-#### Resume
+#### Portfolio
 ##### Argentis Group:  Office Location Proposal
 * Class Project utilizing cluserting methods to propose new office locations in Central Ohio
 * Skills Utilized:
