@@ -1,21 +1,21 @@
-## Resume
-### Argentis Group:  Office Location Proposal
-* Project utilizing cluserting methods to propose new office locations in Central Ohio
+#### Resume
+##### Argentis Group:  Office Location Proposal
+* Class Project utilizing cluserting methods to propose new office locations in Central Ohio
 * Skills Utilized:
   1. SAS
   2. Data Cleansing
   3. Statistical Analysis
   4. Model Interpretation
-### Challenger: When Science and Bureaucracy Collide
-* Project utilizing Data Visualization to create effective dashboards
+##### Challenger: When Science and Bureaucracy Collide
+* Class Project utilizing Data Visualization to create effective dashboards
 * Skills Utilized:
-    1. SAS Viya
-    2. Tableau
+    1. Tableau
+    2. SAS Viya
     3. Data Cleansing
     4. Data Wrangling
     5. Data Visualization
-### Classification Models to Predict Credit Worthiness
-* Project utilizing classification methods to predict credit worthiness
+##### Classification Models to Predict Credit Worthiness
+* Class Project utilizing classification methods to predict credit worthiness
 * Skills Utilized:
   1. R
   2. RStudio
@@ -23,11 +23,11 @@
   4. Data Visualization
   5. Statistical Analysis
   6. Model Interpretation
-### Data Visualizations
+##### Data Visualizations
 * Examples of dashboards created in:
   1. Tableau
   2. SAS Viya
-### Money Laundering: A Predictive Model Approach
+##### Money Laundering: A Predictive Model Approach
 * Masters in Data Analytics Capstone Project
 * SKills Utilized:
   1. Python - pandas, scikit learn, numpy
@@ -36,14 +36,14 @@
   5. Data Visualization
   6. Statistical Analysis
   7. Model Interpretation
-### Predicting Cryptocurrency Returns
+##### Predicting Cryptocurrency Returns
 * Project utilizing linear regression methods to predict cryptocurrency returns
 * Skills Utilized:
   1. Python - pandas, scikit learn, numpy
   2. Data Cleansing
   3. Statistical Analysis
   4. Model Interpretation
-### Python Code
+##### Python Code
 * Examples of Python Code for:
   1. Classification Models with scikit learn
   2. Creating a Perceptron Algorithm
@@ -57,7 +57,7 @@
   10. Linear Regression with scitkit learn
   11. Principal Component and Linear Discriminant Analysis with scikit learn
   12. Update a Dataframe
-### R Code
+##### R Code
 * Examples of R Code for:
   1. Decision Trees
   2. Feature Selection
@@ -69,8 +69,8 @@
   8. Principal Component Analysis
   9. R Commands
   10. Support Vector Machines
-### Security Risk in Cloud Computing
-* Project proposing a cloud computing architecture for relational databases and the security risks associated with them
+##### Security Risk in Cloud Computing
+* Class Project proposing a cloud computing architecture for relational databases and the security risks associated with them
 * Skills Utilized:
   1. Relational Database Management Systems
   2. Architecture
