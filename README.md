@@ -35,7 +35,8 @@
   4. Data Cleansing
   5. Data Visualization
   6. Statistical Analysis
-  7. Model Interpretation
+  7. Undersampling, Oversampling, and SMOTE methods
+  8. Model Interpretation
 ##### Predicting Cryptocurrency Returns
 * Project utilizing linear regression methods to predict cryptocurrency returns
 * Skills Utilized:
